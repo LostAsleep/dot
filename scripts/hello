@@ -1,0 +1,13 @@
+#!/bin/sh
+
+say_hello() {
+  echo "Hello"
+  echo "How are you?"
+}
+
+say_goodbye() {
+  echo "Goodbye."
+}
+
+say_hello
+say_goodbye

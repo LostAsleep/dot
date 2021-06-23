@@ -1,0 +1,5 @@
+#!/bin/sh
+
+# This searches recursively in the current folder 
+# for the search term in all .md files
+grep -RIiHn --color=auto --include=*.md "$*" .

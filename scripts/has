@@ -1,0 +1,19 @@
+#!/bin/sh
+# Check if "$1" exists
+
+has() {
+  if ls "$1" >/dev/null 2>&1; then
+    echo "yes"
+    return  # Exit early if if-statement not true (return b/c it's a function)
+  fi        # No else needed
+  echo "no" # Return at end of function is implicit.
+}
+
+
+#if test $# -ne 1; then  # Check if exactly one argument was given.
+#  echo "usage: has <path>" >&2  # Send message to stderr. This will also prevent
+#  exit                          # redirection into a file or log or something.
+#fi
+
+
+has "$1"

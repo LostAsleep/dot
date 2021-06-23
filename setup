@@ -1,0 +1,17 @@
+#!/bin/sh
+# Symlink the config files to home
+
+ln -sf "$PWD/bashrc" "$HOME/.bashrc"
+ls -lh "$HOME/.bashrc"
+
+ln -sf "$PWD/bash_aliases" "$HOME/.bash_aliases"
+ls -lh "$HOME/.bash_aliases"
+
+ln -sf "$PWD/bash_profile" "$HOME/.bash_profile"
+ls -lh "$HOME/.bash_profile"
+
+ln -sf "$PWD/vimrc" "$HOME/.vimrc"
+ls -lh "$HOME/.vimrc"
+
+ln -sf "$PWD/tmux.conf" "$HOME/.tmux.conf"
+ls -lh "$HOME/.tmux.conf"

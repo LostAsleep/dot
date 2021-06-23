@@ -1,0 +1,5 @@
+#!/bin/sh
+
+# Get the GMT (greenwich mean time) to the second
+
+exec date -u +%Y%m%d%H%M%S

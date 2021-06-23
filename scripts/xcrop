@@ -1,0 +1,4 @@
+#! /bin/sh
+# remove an X-window titlebar that should work on any DE 
+# run this in a terminal and then click on the window
+xprop -f _MOTIF_WM_HINTS 32c -set _MOTIF_WM_HINTS "0x2, 0x0, 0x2, 0x0, 0x0"

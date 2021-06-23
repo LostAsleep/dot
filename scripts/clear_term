@@ -1,0 +1,10 @@
+#!/bin/sh
+
+clear_term() {
+  # This function will clear the terminal with ANSI escapes alone.
+  # As no binary for this is required it should be quite fast.
+  printf "\e[1;1H\e[2J"
+}
+
+clear_term
+
