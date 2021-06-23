@@ -110,18 +110,24 @@ alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo
 
 # ##########################################################
 # Adding stuff to PATH (hopefully this will fix custom lynx)
+# export PATH="$HOME/.config/lynx:$PATH"
+# export PATH="$HOME/Repos/gitlab.com/Lost-Asleep/dotfiles/scripts:$PATH"
+# export PATH="$HOME/Repos/gitlab.com/Lost-Asleep/dotfiles/lynx:$PATH"
+# export PATH="$HOME/Repos/gitlab.com/lynx:$PATH"
+# export PATH="$HOME/Repos/gitlab.com/dotfiles/scripts:$PATH"
+# export PATH="$HOME/Repos/gitlab.com/Lost-Asleep/lynx:$PATH"
+
 export PATH="$HOME/.config/lynx:$PATH"
-export PATH="$HOME/Repos/gitlab.com/Lost-Asleep/dotfiles/scripts:$PATH"
-export PATH="$HOME/Repos/gitlab.com/Lost-Asleep/dotfiles/lynx:$PATH"
-export PATH="$HOME/Repos/gitlab.com/lynx:$PATH"
-export PATH="$HOME/Repos/gitlab.com/dotfiles/scripts:$PATH"
-export PATH="$HOME/Repos/gitlab.com/Lost-Asleep/lynx:$PATH"
+export PATH="$HOME/Repos/github.com/LostAsleep/dot/scripts:$PATH"
+export PATH="$HOME/Repos/github.com/LostAsleep/dot/lynx:$PATH"
+export PATH="$HOME/Repos/github.com/scripts:$PATH"
+export PATH="$HOME/Repos/github.com/LostAsleep/lynx:$PATH"
 
 
-export PATH="/usr/local/opt/coreutils/libexec/gnubin:$PATH"
-export PATH="/usr/local/bin:$PATH"
-export MANPATH="/usr/local/opt/coreutils/libexec/gnuman:$MANPATH"
-export PATH="/usr/local/lib/python3.8/site-packages:$PATH"   # Mac os pyflaces for emacs flymake
+# export PATH="/usr/local/opt/coreutils/libexec/gnubin:$PATH"
+# export PATH="/usr/local/bin:$PATH"
+# export MANPATH="/usr/local/opt/coreutils/libexec/gnuman:$MANPATH"
+# export PATH="/usr/local/lib/python3.8/site-packages:$PATH"   # Mac os pyflaces for emacs flymake
 # export PATH="$(brew --prefix)/opt/grep/libexec/gnubin:$PATH" # for using gnu utils with normal names
 export PATH="$HOME/bin:$PATH"  # For exercism.io
 export PATH="$HOME/.local/bin:$PATH"  # For pytest install
