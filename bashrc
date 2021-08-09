@@ -1,4 +1,3 @@
-#!/bin/bash
 # ~/.bashrc: executed by bash(1) for non-login shells. For examples
 # see /usr/share/doc/bash/examples/startup-files (in the package bash-doc)
 # for examples
@@ -17,8 +16,8 @@ HISTCONTROL=ignoreboth
 shopt -s histappend
 
 # for setting history length see HISTSIZE and HISTFILESIZE in bash(1)
-HISTSIZE=1000
-HISTFILESIZE=2000
+HISTSIZE=10000
+HISTFILESIZE=20000
 
 # check the window size after each command and, if necessary,
 # update the values of LINES and COLUMNS.
@@ -87,6 +86,7 @@ PS1="\u@\h:\w\$ "
 fi
 unset color_prompt force_color_prompt
 
+# ----------------- dircolors ------------------------------------------
 
 # enable color support of ls
 if [ -x "/usr/bin/dircolors" ]; then
@@ -97,25 +97,14 @@ if [ -x "/usr/bin/dircolors" ]; then
 	fi
 fi
 
-alias ls="ls --color=yes" # ls will use the dircolors definitions automatically
+# ls will use the dircolors definitions automatically
+# -h will output human readable sizes and such
+alias ls="ls -h --color=yes"
 
 # colored GCC warnings and errors
-#export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quote=01'
+# export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quote=01'
 
-
-# Add an "alert" alias for long running commands.  Use like so:
-#   sleep 10; alert
-alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
-
-
-# ##########################################################
-# Adding stuff to PATH (hopefully this will fix custom lynx)
-# export PATH="$HOME/.config/lynx:$PATH"
-# export PATH="$HOME/Repos/gitlab.com/Lost-Asleep/dotfiles/scripts:$PATH"
-# export PATH="$HOME/Repos/gitlab.com/Lost-Asleep/dotfiles/lynx:$PATH"
-# export PATH="$HOME/Repos/gitlab.com/lynx:$PATH"
-# export PATH="$HOME/Repos/gitlab.com/dotfiles/scripts:$PATH"
-# export PATH="$HOME/Repos/gitlab.com/Lost-Asleep/lynx:$PATH"
+# ----------------- path -----------------------------------------------
 
 export PATH="$HOME/.config/lynx:$PATH"
 export PATH="$HOME/Repos/github.com/LostAsleep/dot/scripts:$PATH"
@@ -123,34 +112,40 @@ export PATH="$HOME/Repos/github.com/LostAsleep/dot/lynx:$PATH"
 export PATH="$HOME/Repos/github.com/scripts:$PATH"
 export PATH="$HOME/Repos/github.com/LostAsleep/lynx:$PATH"
 
+# ----------------- vim keybindings ------------------------------------
 
-# export PATH="/usr/local/opt/coreutils/libexec/gnubin:$PATH"
-# export PATH="/usr/local/bin:$PATH"
-# export MANPATH="/usr/local/opt/coreutils/libexec/gnuman:$MANPATH"
-# export PATH="/usr/local/lib/python3.8/site-packages:$PATH"   # Mac os pyflaces for emacs flymake
-# export PATH="$(brew --prefix)/opt/grep/libexec/gnubin:$PATH" # for using gnu utils with normal names
-export PATH="$HOME/bin:$PATH"  # For exercism.io
-export PATH="$HOME/.local/bin:$PATH"  # For pytest install
+set -o vi # default ist emacs style keybindings 
 
-export PATH="$PATH:/usr/local/go/bin"
+# ----------------- aliases --------------------------------------------
 
+# ls, clear, vi and grep
+alias ll='ls -l'
+alias la='ls -lA'
+alias c=clear_term
+alias vi=vim
+alias grep='grep --color=auto'
 
+# script aliases (needs dotfiles/script and lynx directories in PATH)
+alias ?='duck'
+alias ??='google'
 
-# Python path for virtualenvwrapper
-# export PYTHONPATH=${PYTHONPATH}:/usr/bin
-# VIRTUALENVWRAPPER_PYTHON="$(command \which python3)"
-# and now virtualenvwrapper itself
-# source ~/.local/bin/virtualenvwrapper.sh
+# git
+alias gits='git status'  # gs -> is currently ghostscript
 
+# Folders
+alias ..='cd ..'
+alias ...='cd ../..'
+alias ....='cd ../../..'
+alias .....='cd ../../../..'
 
-# Alias definitions.
-# You may want to put all your additions into a separate file like
-# ~/.bash_aliases, instead of adding them here directly.
-# See /usr/share/doc/bash-doc/examples in the bash-doc package.
+# Python
+alias pip='python3 -m pip'
 
-if [ -f "$HOME/.bash_aliases" ]; then
-    "." "$HOME/.bash_aliases"
-fi
+# Typora (Markdown editor) flatpak
+# flatpak install flathub io.typora.Typora
+alias typora='flatpak run io.typora.Typora'
+
+# ----------------- aliases --------------------------------------------
 
 # enable programmable completion features (you don't need to enable
 # this, if it's already enabled in /etc/bash.bashrc and /etc/profile
