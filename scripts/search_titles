@@ -1,0 +1,16 @@
+#!/bin/sh
+# Prints recursively the first level headings of all
+# README.md files in the subdirectories
+
+# Old Version:
+# grep -r '^# ' ./*/README.md
+
+
+search_titles() {
+  search_results="$(find . -type f -name "README.md")"
+  for i in "$search_results"; do
+    printf "%s\n" "$(head -n 1 ${i})"
+  done
+}
+
+search_titles

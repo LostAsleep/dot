@@ -1,5 +1,0 @@
-#!/bin/sh
-# Prints recursively the first level headings of all
-# README.md files in the subdirectories
-grep -r '^# ' ./*/README.md
-
