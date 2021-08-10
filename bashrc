@@ -1,3 +1,4 @@
+#!/bin/bash
 # ~/.bashrc: executed by bash(1) for non-login shells. For examples
 # see /usr/share/doc/bash/examples/startup-files (in the package bash-doc)
 # for examples
@@ -8,16 +9,15 @@ case $- in
       *) return;;
 esac
 
+# ----------------- history --------------------------------------------
+
 # don't put duplicate lines or lines starting with space in the history.
-# See bash(1) for more options
 HISTCONTROL=ignoreboth
-
-# append to the history file, don't overwrite it
-shopt -s histappend
-
-# for setting history length see HISTSIZE and HISTFILESIZE in bash(1)
+shopt -s histappend # append to the history file, don't overwrite it
 HISTSIZE=10000
 HISTFILESIZE=20000
+
+# ----------------- shell options --------------------------------------
 
 # check the window size after each command and, if necessary,
 # update the values of LINES and COLUMNS.
@@ -89,12 +89,20 @@ unset color_prompt force_color_prompt
 # ----------------- dircolors ------------------------------------------
 
 # enable color support of ls
-if [ -x "/usr/bin/dircolors" ]; then
-    if [ -r "$HOME/.dircolors" ]; then
-		eval "$(dircolors -b ~/.dircolors)"
-	else
-		eval "$(dircolors -b)"
-	fi
+# if [ -x "/usr/bin/dircolors" ]; then
+#     if [ -r "$HOME/.dircolors" ]; then
+# 		eval "$(dircolors -b ~/.dircolors)"
+# 	else
+# 		eval "$(dircolors -b)"
+# 	fi
+# fi
+
+if command -v dircolors &>/dev/null; then
+    if test -r "$HOME/.dircolors"; then
+        eval "$(dircolors -b ~/.dircolors)"
+    else
+        eval "$(dircolors -b)"
+    fi
 fi
 
 # ls will use the dircolors definitions automatically
@@ -114,7 +122,7 @@ export PATH="$HOME/Repos/github.com/LostAsleep/lynx:$PATH"
 
 # ----------------- vim keybindings ------------------------------------
 
-set -o vi # default ist emacs style keybindings 
+set -o vi # default ist emacs style keybindings
 
 # ----------------- aliases --------------------------------------------
 
