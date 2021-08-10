@@ -169,7 +169,22 @@ alias pip='python3 -m pip'
 # flatpak install flathub io.typora.Typora
 alias typora='flatpak run io.typora.Typora'
 
-# ----------------- aliases --------------------------------------------
+# ----------------- functions ------------------------------------------
+
+cdtemp() {
+  newdirname="$1"
+  mkdir -p "/tmp/${newdirname}" # -p is not POSIX
+  cd "/tmp/${newdirname}"
+} && export -f cdtemp
+
+newzet() {
+  gmt_timestamp="$(date -u +%Y%m%d%H%M%S)"
+  mkdir -p "${gmt_timestamp}"
+  cd "${gmt_timestamp}"
+  touch "README.md" && vi "README.md"
+} && export -f newzet
+
+# ----------------- programmable completion features ? -----------------
 
 # enable programmable completion features (you don't need to enable
 # this, if it's already enabled in /etc/bash.bashrc and /etc/profile
