@@ -27,8 +27,24 @@ shopt -s "checkwinsize"
 # match all files and zero or more directories and subdirectories.
 #shopt -s globstar
 
+# ----------------- pager ----------------------------------------------
+
 # make less more friendly for non-text input files, see lesspipe(1)
-[ -x "/usr/bin/lesspipe" ] && eval "$(SHELL=/bin/sh lesspipe)"
+# [ -x "/usr/bin/lesspipe" ] && eval "$(SHELL=/bin/sh lesspipe)"
+
+if test -x "/usr/bin/lesspipe"; then
+    export LESSOPEN="| /usr/bin/lesspipe %s";
+    export LESSCLOSE="/urs/bin/lesspipe %s %s";
+fi
+
+# This is for colored man pages
+export LESS_TERMCAP_mb="[35m" # magenta
+export LESS_TERMCAP_md="[35m" # yellow
+export LESS_TERMCAP_me=""
+export LESS_TERMCAP_se=""
+export LESS_TERMCAP_so="[34m" # blue
+export LESS_TERMCAP_us="[4m"  # underline
+
 
 # set a fancy prompt (non-color, unless we know we "want" color)
 case "$TERM" in
