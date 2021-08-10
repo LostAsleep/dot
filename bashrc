@@ -114,11 +114,11 @@ unset color_prompt force_color_prompt
 # fi
 
 if command -v dircolors &>/dev/null; then
-    if test -r "$HOME/.dircolors"; then
-        eval "$(dircolors -b ~/.dircolors)"
-    else
-        eval "$(dircolors -b)"
-    fi
+  if test -r "$HOME/.dircolors"; then
+    eval "$(dircolors -b ~/.dircolors)"
+  else
+    eval "$(dircolors -b)"
+  fi
 fi
 
 # ls will use the dircolors definitions automatically
