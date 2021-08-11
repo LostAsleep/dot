@@ -162,6 +162,9 @@ alias ...='cd ../..'
 alias ....='cd ../../..'
 alias .....='cd ../../../..'
 
+# Laziness
+alias chmox='chmod +x'
+
 # Python
 alias pip='python3 -m pip'
 
@@ -179,7 +182,7 @@ cdtemp() {
 
 newzet() {
   gmt_timestamp="$(date -u +%Y%m%d%H%M%S)"
-  mkdir -p "${gmt_timestamp}"
+  mkdir -p "${gmt_timestamp}" # -p is not POSIX
   cd "${gmt_timestamp}"
   touch "README.md" && vi "README.md"
 } && export -f newzet
