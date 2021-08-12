@@ -163,12 +163,41 @@ cdtemp() {
   cd "/tmp/${newdirname}"
 } && export -f cdtemp
 
+
 newzet() {
   gmt_timestamp="$(date -u +%Y%m%d%H%M%S)"
   mkdir -p "${gmt_timestamp}" # -p is not POSIX
   cd "${gmt_timestamp}"
   touch "README.md" && vi "README.md"
 } && export -f newzet
+
+
+pathappend() { # Appends the given path to PATH
+  declare arg  # BASH only, not POSIX compliant
+  for arg in "$@"; do
+    test -d "${arg}" || continue
+    PATH=${PATH//:${arg}:/:} # delete arg from PATH if its in the middle
+    PATH=${PATH/#${arg}:/}   # delete arg from PATH if its the first thing
+    PATH=${PATH/%:${arg}/}   # delete arg from PATH if its the last thing
+    # Then export to PATH with new position. 
+    # The {PATH:+ is for the rare case that no PATH exists (create new one)
+    export PATH="${PATH:+"${PATH}:"}${arg}"
+  done
+}
+
+
+pathprepend() { # Puts the given path at the top of PATH
+  declare ARG   # BASH only, not POSIX compliant
+  for ARG in "$@"; do
+    test -d "${ARG}" || continue
+    PATH=${PATH//:${ARG}:/:} # delete ARG from PATH if its in the middle
+    PATH=${PATH/#${ARG}:/}   # delete ARG from PATH if its the first thing
+    PATH=${PATH/%:${ARG}/}   # delete ARG from PATH if its the last thing
+    # Then export to PATH with new position. 
+    # The {PATH:+ is for the rare case that no PATH exists (create new one)
+    export PATH="${ARG}${PATH:+":${PATH}"}"
+  done
+}
 
 # ----------------- path -----------------------------------------------
 
