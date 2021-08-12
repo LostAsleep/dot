@@ -114,19 +114,21 @@ fi
 
 # ls will use the dircolors definitions automatically
 # -h will output human readable sizes and such
-alias ls="ls -h --color=yes"
 
 # colored GCC warnings and errors
 # export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quote=01'
 
 # ----------------- aliases --------------------------------------------
-
-# ls, clear, vi and grep
+# ls, clear, vi, grep, curl
+alias ls="ls -h --color=yes" # Needed for dircolors to work.
 alias ll='ls -l'
 alias la='ls -lA'
 alias c=clear_term
 alias vi=vim
-alias grep='grep --color=auto'
+alias grep='grep -i --colour=auto' # For grep -i means case insensitive
+alias egrep='egrep -i --colour=auto'
+alias fgrep='fgrep -i --colour=auto'
+alias curl='curl -L'
 
 # script aliases (needs dotfiles/script and lynx directories in PATH)
 alias ?='duck'
