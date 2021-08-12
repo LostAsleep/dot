@@ -104,15 +104,6 @@ unset color_prompt force_color_prompt
 
 # ----------------- dircolors ------------------------------------------
 
-# enable color support of ls
-# if [ -x "/usr/bin/dircolors" ]; then
-#     if [ -r "$HOME/.dircolors" ]; then
-# 		eval "$(dircolors -b ~/.dircolors)"
-# 	else
-# 		eval "$(dircolors -b)"
-# 	fi
-# fi
-
 if command -v dircolors &>/dev/null; then
   if test -r "$HOME/.dircolors"; then
     eval "$(dircolors -b ~/.dircolors)"
