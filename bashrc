@@ -11,11 +11,12 @@ esac
 
 # ----------------- history --------------------------------------------
 
-# don't put duplicate lines or lines starting with space in the history.
-HISTCONTROL=ignoreboth
-shopt -s histappend # append to the history file, don't overwrite it
-HISTSIZE=10000
-HISTFILESIZE=20000
+export HISTCONTROL=ignoreboth # no duplicate lines or leading spaces in history.
+export HISTSIZE=10000
+export HISTFILESIZE=20000
+
+set -o vi # Use vi keybindings.
+shopt -s histappend # Append to history file, don't overwrite it.
 
 # ----------------- shell options --------------------------------------
 
@@ -118,10 +119,6 @@ alias ls="ls -h --color=yes"
 
 # colored GCC warnings and errors
 # export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quote=01'
-
-# ----------------- vim keybindings ------------------------------------
-
-set -o vi # default ist emacs style keybindings
 
 # ----------------- aliases --------------------------------------------
 
