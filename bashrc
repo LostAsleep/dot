@@ -119,14 +119,6 @@ alias ls="ls -h --color=yes"
 # colored GCC warnings and errors
 # export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quote=01'
 
-# ----------------- path -----------------------------------------------
-
-export PATH="$HOME/.config/lynx:$PATH"
-export PATH="$HOME/Repos/github.com/LostAsleep/dot/scripts:$PATH"
-export PATH="$HOME/Repos/github.com/LostAsleep/dot/lynx:$PATH"
-export PATH="$HOME/Repos/github.com/scripts:$PATH"
-export PATH="$HOME/Repos/github.com/LostAsleep/lynx:$PATH"
-
 # ----------------- vim keybindings ------------------------------------
 
 set -o vi # default ist emacs style keybindings
@@ -177,6 +169,14 @@ newzet() {
   cd "${gmt_timestamp}"
   touch "README.md" && vi "README.md"
 } && export -f newzet
+
+# ----------------- path -----------------------------------------------
+
+export PATH="$HOME/.config/lynx:$PATH"
+export PATH="$HOME/Repos/github.com/LostAsleep/dot/scripts:$PATH"
+export PATH="$HOME/Repos/github.com/LostAsleep/dot/lynx:$PATH"
+export PATH="$HOME/Repos/github.com/scripts:$PATH"
+export PATH="$HOME/Repos/github.com/LostAsleep/lynx:$PATH"
 
 # ----------------- programmable completion features ? -----------------
 
