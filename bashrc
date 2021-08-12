@@ -118,7 +118,70 @@ fi
 # colored GCC warnings and errors
 # export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quote=01'
 
+# ----------------- functions ------------------------------------------
+
+cdtemp() {
+  newdirname="$1"
+  mkdir -p "/tmp/${newdirname}" # -p is not POSIX
+  cd "/tmp/${newdirname}"
+} && export -f cdtemp
+
+
+newzet() {
+  gmt_timestamp="$(date -u +%Y%m%d%H%M%S)"
+  mkdir -p "${gmt_timestamp}" # -p is not POSIX
+  cd "${gmt_timestamp}"
+  touch "README.md" && vi "README.md"
+} && export -f newzet
+
+
+clear_term() {
+  # This function will clear the terminal with ANSI escapes alone.
+  # As no binary for this is required it should be quite fast.
+  printf "\e[1;1H\e[2J"
+} && export -f clear_term
+
+
+# ----------------- path -----------------------------------------------
+
+pathappend() { # Appends the given path to PATH
+  declare arg  # BASH only, not POSIX compliant
+  for arg in "$@"; do
+    test -d "${arg}" || continue
+    PATH=${PATH//:${arg}:/:} # delete arg from PATH if its in the middle
+    PATH=${PATH/#${arg}:/}   # delete arg from PATH if its the first thing
+    PATH=${PATH/%:${arg}/}   # delete arg from PATH if its the last thing
+    # Then export to PATH with new position. 
+    # The {PATH:+ is for the rare case that no PATH exists (create new one)
+    export PATH="${PATH:+"${PATH}:"}${arg}"
+  done
+}
+
+
+pathprepend() { # Puts the given path at the top of PATH
+  declare ARG   # BASH only, not POSIX compliant
+  for ARG in "$@"; do
+    test -d "${ARG}" || continue
+    PATH=${PATH//:${ARG}:/:} # delete ARG from PATH if its in the middle
+    PATH=${PATH/#${ARG}:/}   # delete ARG from PATH if its the first thing
+    PATH=${PATH/%:${ARG}/}   # delete ARG from PATH if its the last thing
+    # Then export to PATH with new position. 
+    # The {PATH:+ is for the rare case that no PATH exists (create new one)
+    export PATH="${ARG}${PATH:+":${PATH}"}"
+  done
+}
+
+# Remember last arg will be first in path
+pathprepend \
+  "$HOME/Repos/github.com/LostAsleep/dot/scripts"
+
+pathappend \
+  "$HOME/.config/lynx" \
+  "$HOME/Repos/github.com/LostAsleep/dot/scripts" \
+  "$HOME/Repos/github.com/LostAsleep/dot/lynx"
+
 # ----------------- aliases --------------------------------------------
+
 unalias -a
 # ls, clear, vi, grep, curl
 alias ls="ls -h --color=yes" # Needed for dircolors to work.
@@ -153,58 +216,6 @@ alias pip='python3 -m pip'
 # Typora (Markdown editor) flatpak
 # flatpak install flathub io.typora.Typora
 alias typora='flatpak run io.typora.Typora'
-
-# ----------------- functions ------------------------------------------
-
-cdtemp() {
-  newdirname="$1"
-  mkdir -p "/tmp/${newdirname}" # -p is not POSIX
-  cd "/tmp/${newdirname}"
-} && export -f cdtemp
-
-
-newzet() {
-  gmt_timestamp="$(date -u +%Y%m%d%H%M%S)"
-  mkdir -p "${gmt_timestamp}" # -p is not POSIX
-  cd "${gmt_timestamp}"
-  touch "README.md" && vi "README.md"
-} && export -f newzet
-
-
-pathappend() { # Appends the given path to PATH
-  declare arg  # BASH only, not POSIX compliant
-  for arg in "$@"; do
-    test -d "${arg}" || continue
-    PATH=${PATH//:${arg}:/:} # delete arg from PATH if its in the middle
-    PATH=${PATH/#${arg}:/}   # delete arg from PATH if its the first thing
-    PATH=${PATH/%:${arg}/}   # delete arg from PATH if its the last thing
-    # Then export to PATH with new position. 
-    # The {PATH:+ is for the rare case that no PATH exists (create new one)
-    export PATH="${PATH:+"${PATH}:"}${arg}"
-  done
-}
-
-
-pathprepend() { # Puts the given path at the top of PATH
-  declare ARG   # BASH only, not POSIX compliant
-  for ARG in "$@"; do
-    test -d "${ARG}" || continue
-    PATH=${PATH//:${ARG}:/:} # delete ARG from PATH if its in the middle
-    PATH=${PATH/#${ARG}:/}   # delete ARG from PATH if its the first thing
-    PATH=${PATH/%:${ARG}/}   # delete ARG from PATH if its the last thing
-    # Then export to PATH with new position. 
-    # The {PATH:+ is for the rare case that no PATH exists (create new one)
-    export PATH="${ARG}${PATH:+":${PATH}"}"
-  done
-}
-
-# ----------------- path -----------------------------------------------
-
-export PATH="$HOME/.config/lynx:$PATH"
-export PATH="$HOME/Repos/github.com/LostAsleep/dot/scripts:$PATH"
-export PATH="$HOME/Repos/github.com/LostAsleep/dot/lynx:$PATH"
-export PATH="$HOME/Repos/github.com/scripts:$PATH"
-export PATH="$HOME/Repos/github.com/LostAsleep/lynx:$PATH"
 
 # ----------------- programmable completion features ? -----------------
 

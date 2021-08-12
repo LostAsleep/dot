@@ -1,3 +1,0 @@
-#!/bin/sh
-cd "$HOME/Repos/gitlab.com/Lost-Asleep/dotfiles/mullvad_config_linux_de_fra" || exit
-sudo openvpn mullvad_de_fra.conf
