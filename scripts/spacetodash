@@ -2,5 +2,5 @@
 # This would be for renaming all files in a directory
 # for file in *; do mv "$file" $(echo $file | tr ' ' '-') ; done
 if test -f "$1"; then
-  mv "$1" $(printf "$1" | tr ' ' '-')
+  mv "$1" "$(printf "%s" "$1" | tr ' ' '-')"
 fi
