@@ -185,15 +185,16 @@ alias ls="ls -h --color=yes" # Needed for dircolors to work.
 alias ll='ls -l'
 alias la='ls -lA'
 alias c=clear_term
-alias vi=vim
 alias grep='grep -i --colour=auto' # For grep -i means case insensitive
 alias egrep='egrep -i --colour=auto'
 alias fgrep='fgrep -i --colour=auto'
 alias curl='curl -L'
+which vim &>/dev/null && alias vi=vim
 
 # script aliases (needs dotfiles/script and lynx directories in PATH)
 alias ?='duck'
 alias ??='google'
+alias ???='bing'
 
 # git
 alias gits='git status'  # gs -> is currently ghostscript

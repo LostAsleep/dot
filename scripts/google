@@ -1,2 +1,4 @@
 #!/bin/sh
-lynx "google.com/search?q=$*"
+url="https://www.google.com/search?q=$*"
+# exec lynx "$url"
+exec w3m "${url}"
