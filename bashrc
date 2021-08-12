@@ -177,6 +177,16 @@ pathappend \
   "$HOME/Repos/github.com/LostAsleep/dot/scripts" \
   "$HOME/Repos/github.com/LostAsleep/dot/lynx"
 
+# ------------------------------ cdpath ------------------------------
+
+export CDPATH=.:\
+~/Repos/github.com:\
+~/Repos/github.com/LostAsleep:\
+~/Repos/github.com/LostAsleep/dot:\
+~/Repos/github.com/LostAsleep/dot/scripts:\
+~/Repos:\
+~
+
 # ----------------- aliases --------------------------------------------
 
 unalias -a
