@@ -1,7 +1,4 @@
 #!/bin/bash
-# ~/.bashrc: executed by bash(1) for non-login shells. For examples
-# see /usr/share/doc/bash/examples/startup-files (in the package bash-doc)
-# for examples
 
 # If not running interactively, don't do anything
 case $- in
@@ -46,6 +43,7 @@ export LESS_TERMCAP_se=""
 export LESS_TERMCAP_so="[34m" # blue
 export LESS_TERMCAP_us="[4m"  # underline
 
+# ----------------- fancy prompt stuff ---------------------------------
 
 # set a fancy prompt (non-color, unless we know we "want" color)
 case "$TERM" in
@@ -56,6 +54,7 @@ esac
 # off by default to not distract the user: the focus in a terminal window
 # should be on the output of commands, not on the prompt
 force_color_prompt=yes
+
 
 if [ -n "$force_color_prompt" ]; then
     if [ -x "/usr/bin/tput" ] && tput setaf 1 >&/dev/null; then
