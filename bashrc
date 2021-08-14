@@ -6,6 +6,19 @@ case $- in
       *) return;;
 esac
 
+# ----------------------- environment variables ------------------------
+
+export GITUSER="LostAsleep"
+export DOWNLOADS="$HOME/Downloads"
+export DOTFILES="$HOME/Repos/github.com/$GITUSER/dot"
+export TERM=xterm-256color
+
+export EDITOR=vi
+export VISUAL=vi
+export EDITOR_PREFIX=vi
+
+export PYTHONDONTWRITEBYTECODE=1
+
 # ----------------- history --------------------------------------------
 
 export HISTCONTROL=ignoreboth # no duplicate lines or leading spaces in history.
@@ -19,11 +32,10 @@ shopt -s histappend # Append to history file, don't overwrite it.
 
 # check the window size after each command and, if necessary,
 # update the values of LINES and COLUMNS.
-shopt -s "checkwinsize"
-
+shopt -s checkwinsize
 # If set, the pattern "**" used in a pathname expansion context will
 # match all files and zero or more directories and subdirectories.
-#shopt -s globstar
+shopt -s globstar
 
 # ----------------- pager ----------------------------------------------
 
@@ -43,65 +55,41 @@ export LESS_TERMCAP_se=""
 export LESS_TERMCAP_so="[34m" # blue
 export LESS_TERMCAP_us="[4m"  # underline
 
-# ----------------- fancy prompt stuff ---------------------------------
+# ----------------- prompt ---------------------------------------------
 
-# set a fancy prompt (non-color, unless we know we "want" color)
-case "$TERM" in
-    xterm-color|*-256color) color_prompt=yes;;
-esac
+__ps1() {
+  local black='\[\e[30m\]';
+  local red='\[\e[31m\]';
+  local green='\[\e[32m\]';
+  local yellow='\[\e[33m\]';
+  local blue='\[\e[34m\]';
+  local magenta='\[\e[35m\]';
+  local cyan='\[\e[36m\]';
+  local white='\[\e[37m\]';
+  local reset='\[\e[0m\]';
 
-# uncomment for a colored prompt, if the terminal has the capability; turned
-# off by default to not distract the user: the focus in a terminal window
-# should be on the output of commands, not on the prompt
-force_color_prompt=yes
+  # Special Characters for the PS1 prompt variable
+  # \h    the hostname up to the first .
+  # \n    newline
+  # \s    the name of the shell
+  # \t    the current time in 24-hour format
+  # \u    the username of the current user
+  # \w    the current working directory
+  # \W    the basename of the current working directory
 
+  local branch=$(git branch --show-current 2>/dev/null)
+  test -n "$branch" && branch="($branch)"
 
-if [ -n "$force_color_prompt" ]; then
-    if [ -x "/usr/bin/tput" ] && tput setaf 1 >&/dev/null; then
-	# We have color support; assume it's compliant with Ecma-48
-	# (ISO/IEC-6429). (Lack of such support is extremely rare, and such
-	# a case would tend to support setf rather than setaf.)
-	color_prompt=yes
-    else
-	color_prompt=
-    fi
-fi
+  PS1="\[${yellow}\]\u";  # username
+  PS1+="\[${white}\]@";
+  PS1+="\[${blue}\]\h";  # host
+  PS1+="\[${white}\]:";
+  PS1+="\[${magenta}\]\W";   # working directory
+  PS1+="\[${red}\]$branch";
+  PS1+="\[${white}\]\$ \[${reset}\]";  # '$' (and reset color)
+}
 
-black="$(tput setaf 0)"
-red="$(tput setaf 1)"
-green="$(tput setaf 2)"
-yellow="$(tput setaf 3)"
-blue="$(tput setaf 4)"
-magenta="$(tput setaf 5)"
-cyan="$(tput setaf 6)"
-white="$(tput setaf 7)"
-old="$(tput bold)";
-reset="$(tput sgr0)";
-
-# Special Characters for the PS1 prompt variable
-#
-# \h    the hostname up to the first .
-# \n    newline
-# \s    the name of the shell
-# \t    the current time in 24-hour format
-# \u    the username of the current user
-# \w    the current working directory
-# \W    the basename of the current working directory
-
-if [ "$color_prompt" = yes ]; then
-    PS1="\[${yellow}\]\u";  # username
-    PS1+="\[${white}\]@";
-    PS1+="\[${blue}\]\h";  # host
-    PS1+="\[${white}\]:";
-    PS1+="\[${magenta}\]\W";   # working directory
-    PS1+="\[${white}\]\$ \[${reset}\]";  # '$' (and reset color)
-
-    export PS1
-
-else
-PS1="\u@\h:\w\$ "
-fi
-unset color_prompt force_color_prompt
+PROMPT_COMMAND="__ps1"
 
 # ----------------- dircolors ------------------------------------------
 
