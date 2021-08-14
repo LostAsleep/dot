@@ -19,6 +19,9 @@ export EDITOR_PREFIX=vi
 
 export PYTHONDONTWRITEBYTECODE=1
 
+export GOPATH="$HOME/.local/share/go"
+export GOBIN="$HOME/.local/share/go/bin"
+
 # ----------------- history --------------------------------------------
 
 export HISTCONTROL=ignoreboth # no duplicate lines or leading spaces in history.
@@ -160,12 +163,15 @@ pathprepend() { # Puts the given path at the top of PATH
 
 # Remember last arg will be first in path
 pathprepend \
+  "$HOME/.local/bin" \
   "$HOME/Repos/github.com/LostAsleep/dot/scripts"
 
 pathappend \
   "$HOME/.config/lynx" \
   "$HOME/Repos/github.com/LostAsleep/dot/scripts" \
-  "$HOME/Repos/github.com/LostAsleep/dot/lynx"
+  "$HOME/Repos/github.com/LostAsleep/dot/lynx" \
+  "/usr/local/go/bin" \
+  "$HOME/.local/share/go/bin"
 
 # ------------------------------ cdpath ------------------------------
 
