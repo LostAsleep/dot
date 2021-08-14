@@ -67,14 +67,15 @@ if [ -n "$force_color_prompt" ]; then
     fi
 fi
 
-
-blue="$(tput setaf 26)";
-grey="$(tput setaf 253)";
-orange="$(tput setaf 166)";
-yellow="$(tput setaf 228)";
-green="$(tput setaf 71)";
-white="$(tput setaf 15)";
-bold="$(tput bold)";
+black="$(tput setaf 0)"
+red="$(tput setaf 1)"
+green="$(tput setaf 2)"
+yellow="$(tput setaf 3)"
+blue="$(tput setaf 4)"
+magenta="$(tput setaf 5)"
+cyan="$(tput setaf 6)"
+white="$(tput setaf 7)"
+old="$(tput bold)";
 reset="$(tput sgr0)";
 
 # Special Characters for the PS1 prompt variable
@@ -89,11 +90,11 @@ reset="$(tput sgr0)";
 
 if [ "$color_prompt" = yes ]; then
     PS1="\[${blue}\]\u";  # username
-    PS1+="\[${grey}\]@";
-    PS1+="\[${orange}\]\h";  # host
-    PS1+="\[${grey}\]:";
+    PS1+="\[${white}\]@";
+    PS1+="\[${yellow}\]\h";  # host
+    PS1+="\[${white}\]:";
     PS1+="\[${green}\]\W";   # working directory
-    PS1+="\[${grey}\]\$ \[${reset}\]";  # '$' (and reset color)
+    PS1+="\[${white}\]\$ \[${reset}\]";  # '$' (and reset color)
 
     export PS1
 
