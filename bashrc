@@ -58,6 +58,7 @@ export LESS_TERMCAP_us="[4m"  # underline
 # ----------------- prompt ---------------------------------------------
 
 __ps1() {
+  # Remember local ist not POSIX compliant.
   local black='\[\e[30m\]';
   local red='\[\e[31m\]';
   local green='\[\e[32m\]';
@@ -137,7 +138,7 @@ pathappend() { # Appends the given path to PATH
     PATH=${PATH//:${arg}:/:} # delete arg from PATH if its in the middle
     PATH=${PATH/#${arg}:/}   # delete arg from PATH if its the first thing
     PATH=${PATH/%:${arg}/}   # delete arg from PATH if its the last thing
-    # Then export to PATH with new position. 
+    # Then export to PATH with new position.
     # The {PATH:+ is for the rare case that no PATH exists (create new one)
     export PATH="${PATH:+"${PATH}:"}${arg}"
   done
@@ -151,7 +152,7 @@ pathprepend() { # Puts the given path at the top of PATH
     PATH=${PATH//:${ARG}:/:} # delete ARG from PATH if its in the middle
     PATH=${PATH/#${ARG}:/}   # delete ARG from PATH if its the first thing
     PATH=${PATH/%:${ARG}/}   # delete ARG from PATH if its the last thing
-    # Then export to PATH with new position. 
+    # Then export to PATH with new position.
     # The {PATH:+ is for the rare case that no PATH exists (create new one)
     export PATH="${ARG}${PATH:+":${PATH}"}"
   done
@@ -220,9 +221,9 @@ alias typora='flatpak run io.typora.Typora'
 # this, if it's already enabled in /etc/bash.bashrc and /etc/profile
 # sources /etc/bash.bashrc).
 if ! shopt -oq "posix"; then
-  if [ -f "/usr/share/bash-completion/bash_completion" ]; then
+  if [[ -f "/usr/share/bash-completion/bash_completion" ]]; then
     "." "/usr/share/bash-completion/bash_completion"
-  elif [ -f "/etc/bash_completion" ]; then
+  elif [[ -f "/etc/bash_completion" ]]; then
     "." "/etc/bash_completion"
   fi
 fi
