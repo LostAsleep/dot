@@ -2,7 +2,7 @@
 
 Buyer beware.
 
-## Note for .bashrc use und MacOS (Catalina)
+## Note for .bashrc use and MacOS (Catalina)
 After installing bash via homebrew, changing the default shell to the new bash and symlinking my dotfiles I ran into an error using `ls`:
 
 `s: illegal option -- - usage: ls [-@ABCFGHLOPRSTUWabcdefghiklmnopqrstuwx1%] [file ...]`
