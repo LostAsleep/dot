@@ -166,13 +166,14 @@ if filereadable(expand("~/.vim/autoload/plug.vim"))
   "Plug 'nvie/vim-flake8'  " Add PEP 8 checking for Python3
   Plug 'davidhalter/jedi-vim' " the jedi completion engine for Python
   Plug 'lifepillar/vim-mucomplete' " Minimalist autocomplete popup
-  Plug 'lifepillar/vim-gruvbox8' " An optimized gruvbox colorscheme
-  Plug 'fatih/molokai'
+  Plug 'morhetz/gruvbox'
+  "Plug 'lifepillar/vim-gruvbox8' " An optimized gruvbox colorscheme
+  "Plug 'fatih/molokai'
   call plug#end()
 endif
 
 " colorscheme gruvbox8 " set the colorscheme (now installed)
-colorscheme molokai
+colorscheme gruvbox
 
 
 " enable omni-completion, needs filetype plugin on
