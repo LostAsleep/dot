@@ -89,11 +89,11 @@ reset="$(tput sgr0)";
 # \W    the basename of the current working directory
 
 if [ "$color_prompt" = yes ]; then
-    PS1="\[${blue}\]\u";  # username
+    PS1="\[${yellow}\]\u";  # username
     PS1+="\[${white}\]@";
-    PS1+="\[${yellow}\]\h";  # host
+    PS1+="\[${blue}\]\h";  # host
     PS1+="\[${white}\]:";
-    PS1+="\[${green}\]\W";   # working directory
+    PS1+="\[${magenta}\]\W";   # working directory
     PS1+="\[${white}\]\$ \[${reset}\]";  # '$' (and reset color)
 
     export PS1
