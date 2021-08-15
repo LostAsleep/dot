@@ -6,7 +6,7 @@ case $- in
       *) return;;
 esac
 
-# ----------------------- environment variables ------------------------
+# ----------------- environment variables ------------------------------
 
 export GITUSER="LostAsleep"
 export DOWNLOADS="$HOME/Downloads"
