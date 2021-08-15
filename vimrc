@@ -1,13 +1,8 @@
-" designed for vim 7+
+" designed for vim 9+
 let skip_defaults_vim=1
 set nocompatible
 
-set encoding=utf-8    " to support german Umlaute
-scriptencoding utf-8
-set tw=0 " max line length = 0, so now auto newline chars
-
-
-"####################### Vi Compatible (~/.exrc) #######################
+" ----------------- Vi Compatible (~/.exrc)-----------------------------
 
 " automatically indent new lines
 set autoindent
@@ -26,18 +21,31 @@ set showmode
 
 set tabstop=2
 
+" ----------------- Misc Stuff -----------------------------------------
 
-"#######################################################################
+" to support german Umlaute
+set encoding=utf-8
+scriptencoding utf-8
 
-set norelativenumber        " nice, but not for beginners and streaming
+" max line length = 0, so now auto newline chars
+set tw=0
+
+" Prevent automatic newline characters in txt files on windows
+autocmd BufRead,BufNewFile   *.txt setlocal formatoptions-=t formatoptions+=croql
+
+" ----------------------------------------------------------------------
+
 set softtabstop=2
+
+" mostly used with >> and <<
 set shiftwidth=2
+
 set smartindent
+
 set smarttab
 
-
 if v:version >= 800
-  " stop vim from silently fucking with files that it shouldn't
+  " stop vim from silently messing with files that it shouldn't
   set nofixendofline
 
   " better ascii friendly listchars
@@ -47,7 +55,6 @@ if v:version >= 800
   set foldmethod=manual
   set nofoldenable
 endif
-
 
 " mark trailing spaces as errors
 match ErrorMsg '\s\+$'
@@ -71,9 +78,6 @@ set history=100
 " here because plugins and stuff need it
 syntax enable
 
-" disable the weird search highlights
-set nohlsearch
-
 " faster scrolling
 set ttyfast
 
@@ -96,11 +100,16 @@ set scrolloff=2
 set laststatus=0
 set icon
 
+" not always a fan of bracket matching or folding
+let g:loaded_matchparen=1
+set noshowmatch
 
-"#######################################################################
-" Python specific settings upon loading *.py files. Taken from:
+" wrap around when searching
+set wrapscan
+
+" ----------------- Python Files ---------------------------------------
 " https://realpython.com/vim-and-python-a-match-made-in-heaven/
-au BufNewFile,BufRead *.py
+au BufNewFile,BufRead *.py  " Upon loading *.py files.
     \ set tabstop=4 |
     \ set softtabstop=4 |
     \ set shiftwidth=4 |
@@ -112,14 +121,7 @@ au BufNewFile,BufRead *.py
 set foldmethod=indent
 set foldlevel=99
 
-
-"#######################################################################
-
-" Prevent automatic newline characters in txt files on windows
-autocmd BufRead,BufNewFile   *.txt setlocal formatoptions-=t formatoptions+=croql
-
-
-"#######################################################################
+" ----------------- Backup Stuff ---------------------------------------
 
 " configure backup to one central folder
 " Check if the .vimtmp folder exists in $HOME. If not it will be created
@@ -137,8 +139,7 @@ set undodir=$HOME/.vimtmp//,. " for undo files
 set undofile " enable undo files
 set backup " enable backup (and swap)
 
-
-"#######################################################################
+" ----------------- Plugins --------------------------------------------
 
 " Install vim-plug if not already installed. According to rwxrob plug
 " is better and Vim 8 Plugins suck
@@ -167,14 +168,11 @@ if filereadable(expand("~/.vim/autoload/plug.vim"))
   Plug 'davidhalter/jedi-vim' " the jedi completion engine for Python
   Plug 'lifepillar/vim-mucomplete' " Minimalist autocomplete popup
   Plug 'morhetz/gruvbox'
-  "Plug 'lifepillar/vim-gruvbox8' " An optimized gruvbox colorscheme
-  "Plug 'fatih/molokai'
   call plug#end()
 endif
 
 " colorscheme gruvbox8 " set the colorscheme (now installed)
 colorscheme gruvbox
-
 
 " enable omni-completion, needs filetype plugin on
 set omnifunc=syntaxcomplete#Complete
@@ -201,8 +199,7 @@ set belloff+=ctrlg " If Vim beebs during completion
 let g:mucomplete#enable_auto_at_startup = 1  "autostart
 let g:mucomplete#completion_delay = 1
 
-
-"#######################################################################
+" ----------------------------------------------------------------------
 
 " From the defaul vimrc example file. When started as "evim", evim.vim
 " evim.vim will already have done these settings, bail out.
