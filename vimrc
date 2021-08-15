@@ -1,4 +1,4 @@
-" designed for vim 9+
+" designed for vim 8+
 let skip_defaults_vim=1
 set nocompatible
 
@@ -33,6 +33,9 @@ set tw=0
 " Prevent automatic newline characters in txt files on windows
 autocmd BufRead,BufNewFile   *.txt setlocal formatoptions-=t formatoptions+=croql
 
+" No beeps
+set noerrorbells
+
 " ----------------------------------------------------------------------
 
 set softtabstop=2
@@ -66,16 +69,16 @@ set expandtab
 " increases the maximum buffer size so temp data will not be lost
 set viminfo='20,<1000,s1000
 
-" requires PLATFORM env variable set (in ~/.bashrc)
-if $PLATFORM == 'mac'
-    " required for mac.delete to work"
-    set backspace=indent,eol,start
-endif
+" Makes backspace key more powerful. Required for mac.delete to work.
+set backspace=indent,eol,start
 
 " command history
 set history=100
 
-" here because plugins and stuff need it
+" Show me what I'm typing
+set showcmd
+
+" Here because plugins and stuff need it
 syntax enable
 
 " faster scrolling
@@ -86,12 +89,6 @@ filetype plugin on
 
 " set the background to dark
 set bg=dark
-
-" disable the weird search highlights
-set nohlsearch
-
-" replace tabs with spaces automatically
-set expandtab
 
 " prevent the cursor from moving off screen
 set scrolloff=2
@@ -104,8 +101,47 @@ set icon
 let g:loaded_matchparen=1
 set noshowmatch
 
+" Automatically save before :next, :make etc.
+set autowrite
+
+" Automatically reread changed files without asking me anything
+set autoread
+
+" Time out on key codes but not mappings.
+" Basically this makes terminal Vim work sanely.
+set notimeout
+set ttimeout
+set ttimeoutlen=10
+
+" ----------------- Searching ------------------------------------------
+
 " wrap around when searching
 set wrapscan
+
+" search highlights
+set hlsearch
+
+" Shows the match while typing
+set incsearch
+
+" Search case insensitive...
+set ignorecase
+
+" ... but not when search pattern contains upper case characters
+set smartcase
+
+" ----------------- Some Settings taken from jessfraz ------------------
+
+" In many terminal emulators the mouse works just fine, thus enable it.
+if has('mouse')
+  set mouse=a
+endif
+
+" If linux then set ttymouse
+let s:uname = system("echo -n \"$(uname)\"")
+if !v:shell_error && s:uname == "Linux" && !has('nvim')
+  set ttymouse=xterm
+endif
 
 " ----------------- Python Files ---------------------------------------
 " https://realpython.com/vim-and-python-a-match-made-in-heaven/
