@@ -19,8 +19,10 @@ export EDITOR_PREFIX=vi
 
 export PYTHONDONTWRITEBYTECODE=1
 
+export GOPRIVATE="/github.com/$GITUSER/*"
 export GOPATH="$HOME/.local/share/go"
 export GOBIN="$HOME/.local/share/go/bin"
+export GOPROXY="direct"
 
 # ----------------- history --------------------------------------------
 
