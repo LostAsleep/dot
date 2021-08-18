@@ -198,13 +198,43 @@ if filereadable(expand("~/.vim/autoload/plug.vim"))
   Plug 'jiangmiao/auto-pairs'
   Plug 'sheerun/vim-polyglot'
 
-  "Plug 'vim-scripts/indentpython.vim'  " includes skipped line indents
-  "Plug 'vim-syntastic/syntastic'  " Check Python3 Syntax on save
-  "Plug 'nvie/vim-flake8'  " Add PEP 8 checking for Python3
   Plug 'davidhalter/jedi-vim' " the jedi completion engine for Python
   Plug 'lifepillar/vim-mucomplete' " Minimalist autocomplete popup
   Plug 'morhetz/gruvbox'
+  Plug 'fatih/vim-go', { 'do': ':GoInstallBinaries' }
   call plug#end()
+
+  " golang
+  let g:go_fmt_fail_silently = 0
+  let g:go_fmt_command = 'goimports'
+  let g:go_fmt_autosave = 1
+  let g:go_gopls_enabled = 1
+  let g:go_highlight_types = 1
+  let g:go_highlight_fields = 1
+  let g:go_highlight_functions = 1
+  let g:go_highlight_function_calls = 1
+  let g:go_highlight_operators = 1
+  let g:go_highlight_extra_types = 1
+  let g:go_highlight_variable_declarations = 1
+  let g:go_highlight_variable_assignments = 1
+  let g:go_highlight_build_constraints = 1
+  let g:go_highlight_diagnostic_errors = 1
+  let g:go_highlight_diagnostic_warnings = 1
+  "let g:go_auto_type_info = 1 " forces 'Press ENTER' too much
+  let g:go_auto_sameids = 0
+  "let g:go_metalinter_command='golangci-lint'
+  "let g:go_metalinter_command='golint'
+  "let g:go_metalinter_autosave=1
+  set updatetime=100
+  "let g:go_gopls_analyses = { 'composites' : v:false }
+  au FileType go nmap <leader>t :GoTest!<CR>
+  au FileType go nmap <leader>v :GoVet!<CR>
+  au FileType go nmap <leader>b :GoBuild!<CR>
+  au FileType go nmap <leader>c :GoCoverageToggle<CR>
+  au FileType go nmap <leader>i :GoInfo<CR>
+  au FileType go nmap <leader>l :GoMetaLinter!<CR>
+else
+  autocmd vimleavepre *.go !gofmt -w % " backup if fatih fails
 endif
 
 " colorscheme gruvbox8 " set the colorscheme (now installed)
