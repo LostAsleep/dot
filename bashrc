@@ -19,10 +19,13 @@ export EDITOR_PREFIX=vi
 
 export PYTHONDONTWRITEBYTECODE=1
 
+# Note being able to use private repos by default with Go is really
+# annoying. This is the standard way to overcome that:
 export GOPRIVATE="/github.com/$GITUSER/*"
+export GOPROXY="direct"
+
 export GOPATH="$HOME/.local/share/go"
 export GOBIN="$HOME/.local/share/go/bin"
-export GOPROXY="direct"
 
 # ----------------- history --------------------------------------------
 
