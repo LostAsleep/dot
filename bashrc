@@ -211,6 +211,9 @@ alias ???='bing'
 # git
 alias gits='git status'  # gs -> is currently ghostscript
 
+# shortcuts
+alias snippets='cd $SNIPPETS'
+
 # Folders
 alias ..='cd ..'
 alias ...='cd ../..'
