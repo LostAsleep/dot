@@ -27,6 +27,10 @@ export GOPROXY="direct"
 
 export GOPATH="$HOME/.local/share/go"
 export GOBIN="$HOME/.local/share/go/bin"
+# Mac Stuff
+export GOPATH="/usr/local/go"
+export GOBIN="/usr/local/go/bin"
+
 
 # ----------------- history --------------------------------------------
 
@@ -192,8 +196,19 @@ export CDPATH=.:\
 # ----------------- aliases --------------------------------------------
 
 unalias -a
+
+# Tell ls to be colourful (on a mac)
+
+if [[ "$OSTYPE" == "darwin"* ]]; then
+  export CLICOLOR=1
+  export LSCOLORS=exfxcxdxbxegedabagacad
+else
+  alias ls='ls --color'
+fi
+
+
 # ls, clear, vi, grep, curl
-alias ls="ls -h --color=yes" # Needed for dircolors to work.
+# alias ls='ls -h' # Needed for dircolors to work.
 alias ll='ls -l'
 alias la='ls -lA'
 alias c=clear_term
