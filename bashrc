@@ -20,6 +20,8 @@ export EDITOR_PREFIX=vi
 
 export PYTHONDONTWRITEBYTECODE=1
 
+export GOPATH="$HOME/.local/share/go";
+
 # Note being able to use private repos by default with Go is really
 # annoying. This is the standard way to overcome that:
 export GOPRIVATE="/github.com/$GITUSER/*"
@@ -28,13 +30,11 @@ export GOPROXY="direct"
 # ----------------- macbook settings -----------------------------------
 
 if [[ "$OSTYPE" == "darwin"* ]]; then
-  export GOPATH="/usr/local/go"
   export GOBIN="/usr/local/go/bin"
   # for ls --color to work:
   PATH="/usr/local/opt/coreutils/libexec/gnubin:$PATH"
   MANPATH="/usr/local/opt/coreutils/libexec/gnuman:$MANPATH"
 else
-  export GOPATH="$HOME/.local/share/go"
   export GOBIN="$HOME/.local/share/go/bin"
 fi
 
@@ -187,9 +187,7 @@ pathappend \
   "$HOME/Repos/github.com/LostAsleep/dot/scripts" \
   "$HOME/Repos/github.com/LostAsleep/dot/lynx" \
   "/usr/local/go/bin" \
-  "$HOME/.local/share/go/bina" \
-  "/usr/local/opt/coreutils/libexec/gnubin" \ # for ls --color on mac
-  "/usr/local/opt/coreutils/libexec/gnuman"   # for ls --color on mac
+  "$HOME/.local/share/go/bina"
 
 # ------------------------------ cdpath ------------------------------
 
