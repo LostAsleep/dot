@@ -7,6 +7,9 @@ ls -lh "$HOME/.bashrc"
 ln -sf "$PWD/bash_profile" "$HOME/.bash_profile"
 ls -lh "$HOME/.bash_profile"
 
+ln -sf "$PWD/dircolors" "$HOME/.dircolors"
+ls -lh "$HOME/.dircolors"
+
 ln -sf "$PWD/vimrc" "$HOME/.vimrc"
 ls -lh "$HOME/.vimrc"
 

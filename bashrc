@@ -20,8 +20,8 @@ export EDITOR_PREFIX=vi
 
 export PYTHONDONTWRITEBYTECODE=1
 
-export GOPATH="$HOME/.local/share/go";
-
+export GOPATH="$HOME/.local/share/go"
+export GOBIN="$HOME/.local/share/go/bin"
 # Note being able to use private repos by default with Go is really
 # annoying. This is the standard way to overcome that:
 export GOPRIVATE="/github.com/$GITUSER/*"
@@ -30,12 +30,9 @@ export GOPROXY="direct"
 # ----------------- macbook settings -----------------------------------
 
 if [[ "$OSTYPE" == "darwin"* ]]; then
-  export GOBIN="/usr/local/go/bin"
   # for ls --color to work:
-  PATH="/usr/local/opt/coreutils/libexec/gnubin:$PATH"
-  MANPATH="/usr/local/opt/coreutils/libexec/gnuman:$MANPATH"
-else
-  export GOBIN="$HOME/.local/share/go/bin"
+  export PATH="/usr/local/opt/coreutils/libexec/gnubin:$PATH"
+  export MANPATH="/usr/local/opt/coreutils/libexec/gnuman:$MANPATH"
 fi
 
 # ----------------- history --------------------------------------------
@@ -204,7 +201,7 @@ export CDPATH=.:\
 unalias -a
 
 # ls, clear, vi, grep, curl
-alias ls='ls -h' # Needed for dircolors to work.
+alias ls='ls -h --color' # Needed for dircolors to work.
 alias ll='ls -l'
 alias la='ls -lA'
 alias c=clear_term
