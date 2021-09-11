@@ -75,15 +75,15 @@ export LESS_TERMCAP_us="[4m"  # underline
 
 __ps1() {
   # Remember local ist not POSIX compliant.
-  local black='\[\e[30m\]';
-  local red='\[\e[31m\]';
-  local green='\[\e[32m\]';
-  local yellow='\[\e[33m\]';
-  local blue='\[\e[34m\]';
-  local magenta='\[\e[35m\]';
-  local cyan='\[\e[36m\]';
-  local white='\[\e[37m\]';
-  local reset='\[\e[0m\]';
+  local black='\[\033[0;30m\]';
+  local red='\[\033[0;31m\]';
+  local green='\[\033[0;32m\]';
+  local yellow='\[\033[0;33m\]';
+  local blue='\[\033[0;34m\]';
+  local magenta='\[\033[0;35m\]';
+  local cyan='\[\033[0;36m\]';
+  local white='\[\033[0;37m\]';
+  local reset='\[\033[0m\]';
 
   # Special Characters for the PS1 prompt variable
   # \h    the hostname up to the first .
@@ -97,13 +97,13 @@ __ps1() {
   local branch=$(git branch --show-current 2>/dev/null)
   test -n "$branch" && branch="($branch)"
 
-  PS1="\[${yellow}\]\u";  # username
-  PS1+="\[${white}\]@";
-  PS1+="\[${blue}\]\h";  # host
-  PS1+="\[${white}\]:";
-  PS1+="\[${magenta}\]\W";   # working directory
-  PS1+="\[${red}\]$branch";
-  PS1+="\[${white}\]\$ \[${reset}\]";  # '$' (and reset color)
+  PS1="${yellow}\u";  # username
+  PS1+="${white}@";
+  PS1+="${blue}\h";  # host
+  PS1+="${white}:";
+  PS1+="${magenta}\W";   # working directory
+  PS1+="${red}$branch";
+  PS1+="${white}\$ ${reset}";  # '$' (and reset color)
 }
 
 PROMPT_COMMAND="__ps1"
