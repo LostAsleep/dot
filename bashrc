@@ -14,9 +14,9 @@ export DOTFILES="$HOME/Repos/github.com/$GITUSER/dot"
 export SNIPPETS="$HOME/Repos/github.com/$GITUSER/dot/snippets"
 export TERM=xterm-256color
 
-export EDITOR=vi
-export VISUAL=vi
-export EDITOR_PREFIX=vi
+export EDITOR=vim
+export VISUAL=vim
+export EDITOR_PREFIX=vim
 
 export PYTHONDONTWRITEBYTECODE=1
 
