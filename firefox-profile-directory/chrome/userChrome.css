@@ -1,0 +1,4 @@
+/* ---Tabs/Tab Bar height--- */
+:root {
+ --tab-min-height: 24px !important;
+}
