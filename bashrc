@@ -134,7 +134,7 @@ newzet() {
   gmt_timestamp="$(date -u +%Y%m%d%H%M%S)"
   mkdir -p "${gmt_timestamp}" # -p is not POSIX
   cd "${gmt_timestamp}"
-  touch "README.md" && vi "README.md"
+  touch "README.md" && vim "README.md"
 } && export -f newzet
 
 
@@ -236,7 +236,7 @@ alias pip='python3 -m pip'
 
 # Typora (Markdown editor) flatpak
 # flatpak install flathub io.typora.Typora
-alias typora='flatpak run io.typora.Typora'
+# alias typora='flatpak run io.typora.Typora'
 
 # ----------------- programmable completion features ? -----------------
 
