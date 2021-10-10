@@ -1,4 +1,4 @@
 #!/bin/sh
 touch "connection-ping.log"
-ping -i 3 'google.com' | xargs -L 1 -I '{}' date '+%Y-%m-%d %H:%M:%S  {}' | tee -a 'connection-ping.log'
+ping -i 3 'google.com' | xargs -I '{}' date '+%Y-%m-%d %H:%M:%S  {}' | tee -a 'connection-ping.log'
 
