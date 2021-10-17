@@ -36,6 +36,9 @@ autocmd BufRead,BufNewFile   *.txt setlocal formatoptions-=t formatoptions+=croq
 " No beeps
 set noerrorbells
 
+" Being able to copy to system clipboard (had problems before)
+mouse=v
+
 " ----------------------------------------------------------------------
 
 set softtabstop=2
