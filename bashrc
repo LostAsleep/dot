@@ -234,6 +234,9 @@ alias chmox='chmod +x'
 # Python
 alias pip='python3 -m pip'
 
+# emacsclient
+alias ec='emacsclient --create-frame --alternate-editor=""'
+
 # Typora (Markdown editor) flatpak
 # flatpak install flathub io.typora.Typora
 # alias typora='flatpak run io.typora.Typora'
