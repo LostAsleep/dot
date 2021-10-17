@@ -37,7 +37,7 @@ autocmd BufRead,BufNewFile   *.txt setlocal formatoptions-=t formatoptions+=croq
 set noerrorbells
 
 " Being able to copy to system clipboard (had problems before)
-mouse=v
+set mouse=v
 
 " ----------------------------------------------------------------------
 
