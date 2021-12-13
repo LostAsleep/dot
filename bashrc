@@ -242,7 +242,7 @@ alias vim='vimx'
 
 # Typora (Markdown editor) flatpak
 # flatpak install flathub io.typora.Typora
-alias typora='flatpak run io.typora.Typora'
+# alias typora='flatpak run io.typora.Typora'
 
 # ----------------- programmable completion features ? -----------------
 
