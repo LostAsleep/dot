@@ -181,10 +181,9 @@ pathprepend \
 
 pathappend \
   "$HOME/.config/lynx" \
-  "$HOME/Repos/github.com/LostAsleep/dot/scripts" \
   "$HOME/Repos/github.com/LostAsleep/dot/lynx" \
   "/usr/local/go/bin" \
-  "$HOME/.local/share/go/bina"
+  "$HOME/.local/share/go/bin"
 
 # ------------------------------ cdpath ------------------------------
 
@@ -237,9 +236,13 @@ alias pip='python3 -m pip'
 # emacsclient
 alias ec='emacsclient --create-frame --alternate-editor=""'
 
+# for Fedora
+alias vi='vim'
+alias vim='vimx'
+
 # Typora (Markdown editor) flatpak
 # flatpak install flathub io.typora.Typora
-# alias typora='flatpak run io.typora.Typora'
+alias typora='flatpak run io.typora.Typora'
 
 # ----------------- programmable completion features ? -----------------
 
