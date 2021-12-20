@@ -97,13 +97,14 @@ __ps1() {
   local branch=$(git branch --show-current 2>/dev/null)
   test -n "$branch" && branch="($branch)"
 
-  PS1="${yellow}\u";  # username
+  PS1="${white}["
+  PS1+="${yellow}\u";  # username
   PS1+="${white}@";
-  PS1+="${blue}\h";  # host
-  PS1+="${white}:";
+  PS1+="${cyan}\h";  # host
+  PS1+="${white} ";
   PS1+="${magenta}\W";   # working directory
   PS1+="${red}$branch";
-  PS1+="${white}\$ ${reset}";  # '$' (and reset color)
+  PS1+="${white}]\$ ${reset}";  # '$' (and reset color)
 }
 
 PROMPT_COMMAND="__ps1"
