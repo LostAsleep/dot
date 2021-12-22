@@ -6,3 +6,6 @@
 ;; Use relative path for files in the current directory and sub- directories of it.
 ;; For other files, use an absolute path.
 (setq org-link-file-path-type 'adaptive)
+
+;; Key Combination for the Agenda
+(global-set-key (kbd "C-c a") 'org-agenda)

@@ -10,6 +10,14 @@
 (global-set-key (kbd "M-p") (kbd "C-u 1 M-v"))
 
 
+;; For unique buffer names
+(require 'uniquify)
+(setq uniquify-buffer-name-style 'forward)
+
+;; https://www.emacswiki.org/emacs/SavePlace
+(save-place-mode 1)
+
+
 (use-package undo-tree
   :config
   (global-undo-tree-mode)
@@ -26,6 +34,10 @@
 (setq display-line-numbers-width 5)
 
 
+;; Save minibuffer history
+(savehist-mode 1)
+
+(show-paren-mode 1)
 (use-package rainbow-delimiters
   :config
   (add-hook 'prog-mode-hook 'rainbow-delimiters-mode))
@@ -101,3 +113,18 @@
 
 ;; Location of python interpreter on work machine
 ;; (setq python-shell-interpreter "~/.emacs.d/python-3.8.9-embed-win32/python")
+
+(use-package projectile
+  :diminish projectile-mode
+  :config (projectile-mode)
+  :custom ((projectile-completion-system 'ivy))
+  :bind-keymap
+  ("C-c p" . projectile-command-map)
+  :init
+  ;; NOTE: Set this to the folder where you keep your Git repos!
+  (when (file-directory-p "~/Repos/github.com/LostAsleep/")
+    (setq projectile-project-search-path '("~/Repos/github.com/LostAsleep/")))
+  (setq projectile-switch-project-action #'projectile-dired))
+
+(use-package counsel-projectile
+  :config (counsel-projectile-mode))

@@ -51,7 +51,6 @@
   (setq backup-directory-alist `(("." . ,(concat user-emacs-directory "backups")))))
 
 
-
 (defvar emacs-dir (file-name-directory load-file-name)
   "Get the path to .emacs.d. The root dir of the Emacs configuration.")
 
@@ -66,7 +65,6 @@
 (when (file-exists-p personal-dir)
   (message "Emacs is loading the personal configuration files in %s..." personal-dir)
   (mapc 'load (directory-files personal-dir 't "^[^#\.].*\\.el$"))) ;; probably mapc can be deleted
-
 
 
 ;; Patch security vulnerability in Emacs versions older than 25.3

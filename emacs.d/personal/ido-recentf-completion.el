@@ -30,15 +30,15 @@
   (global-set-key (kbd "M-X") 'smex-major-mode-commands))
 
 
-(use-package fancy-dabbrev
-  :config
-  (defun activate-fancy-dabbrev-keys ()
-    "Set the fancy-dabbrev keys localy and hook to mode."
-    (local-set-key (kbd "<tab>") 'fancy-dabbrev-expand-or-indent)
-    ; If you want TAB to indent the line like it usually does when the cursor
-    ; is not next to an expandable word, use 'fancy-dabbrev-expand-or-indent
-    (local-set-key (kbd "<backtab>") 'fancy-dabbrev-backward))
-  (add-hook 'fancy-dabbrev-mode-hook 'activate-fancy-dabbrev-keys)
-  (setq dabbrev-case-distinction t)
-  (setq dabbrev-case-fold-search t)
-  (setq dabbrev-case-replace nil))
+;; (use-package fancy-dabbrev
+;;   :config
+;;   (defun activate-fancy-dabbrev-keys ()
+;;     "Set the fancy-dabbrev keys localy and hook to mode."
+;;     (local-set-key (kbd "<tab>") 'fancy-dabbrev-expand-or-indent)
+;;     ; If you want TAB to indent the line like it usually does when the cursor
+;;     ; is not next to an expandable word, use 'fancy-dabbrev-expand-or-indent
+;;     (local-set-key (kbd "<backtab>") 'fancy-dabbrev-backward))
+;;   (add-hook 'fancy-dabbrev-mode-hook 'activate-fancy-dabbrev-keys)
+;;   (setq dabbrev-case-distinction t)
+;;   (setq dabbrev-case-fold-search t)
+;;   (setq dabbrev-case-replace nil))
