@@ -204,7 +204,8 @@ unalias -a
 alias ls='ls -h --color' # Needed for dircolors to work.
 alias ll='ls -l'
 alias la='ls -lA'
-alias c=clear_term
+# alias c=clear_term
+alias c='clear'
 alias grep='grep -i --colour=auto' # For grep -i means case insensitive
 alias egrep='egrep -i --colour=auto'
 alias fgrep='fgrep -i --colour=auto'
@@ -238,8 +239,8 @@ alias pip='python3 -m pip'
 alias ec='emacsclient --create-frame --alternate-editor=""'
 
 # for Fedora
-alias vi='vim'
-alias vim='vimx'
+# alias vi='vim'
+# alias vim='vimx'
 
 # Typora (Markdown editor) flatpak
 # flatpak install flathub io.typora.Typora
