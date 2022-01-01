@@ -218,7 +218,7 @@ unalias -a
 # ls, clear, vi, grep, curl
 alias ls='ls -h --color' # Needed for dircolors to work.
 alias ll='ls -l'
-alias la='ls -lA'
+alias la='ls -A'
 # alias c=clear_term
 alias c='clear'
 alias grep='grep -i --colour=auto' # For grep -i means case insensitive
