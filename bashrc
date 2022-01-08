@@ -193,6 +193,7 @@ pathprepend() { # Puts the given path at the top of PATH
 # Remember last arg will be first in path
 pathprepend \
   "$HOME/.local/bin" \
+  "/usr/local/bin" \
   "$HOME/Repos/github.com/LostAsleep/dot/scripts"
 
 pathappend \
