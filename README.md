@@ -21,3 +21,11 @@ Additionally, you can access their man pages with normal names if you add the gn
 
 MANPATH="/usr/local/opt/coreutils/libexec/gnuman:$MANPATH"
 ```
+
+## Note for Emacs dired on MacOS
+To get dired to be able to list directory contents it needs to be able to use `ls`. So coreutils need to be installed and after that put the following into your `init.el`:
+
+```elisp
+(when (equal system-type 'darwin)
+  (setq insert-directory-program "/usr/local/opt/coreutils/libexec/gnubin/ls"))
+```
