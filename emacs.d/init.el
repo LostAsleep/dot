@@ -52,6 +52,14 @@
 
 
 ;; Dired settings:
+;; To enable dired to list stuff on OS X
+;; you also need to install coreutils (through brew) for this to work.
+;; This can be done with the command brew install coreutils
+(when (equal system-type 'darwin)
+  (setq insert-directory-program "/usr/local/opt/coreutils/libexec/gnubin/ls"))
+
+
+
 ;; The first line enables the functionality to open folders
 ;; in the same dired buffer. The second and third lines take
 ;; it a step further and bind the enter key in dired to
@@ -104,9 +112,9 @@
 
 
 ;; Display line numbers in text and org files :-)
-(add-hook 'org-mode-hook 'display-line-numbers-mode)
-(add-hook 'text-mode-hook 'display-line-numbers-mode)
 (setq display-line-numbers-width 5)
+;; (add-hook 'org-mode-hook 'display-line-numbers-mode)
+(add-hook 'text-mode-hook 'display-line-numbers-mode)
 
 
 (use-package rainbow-delimiters
@@ -124,12 +132,12 @@
 
 
 ;; Old auto-complete settings
- (use-package auto-complete
-   :config
-   (ac-config-default)
-   (setq ac-ignore-case nil)
-   (setq ac-delay 0.05)
-   (setq ac-auto-show-menu 0.05))
+ ;; (use-package auto-complete
+ ;;   :config
+ ;;   (ac-config-default)
+ ;;   (setq ac-ignore-case nil)
+ ;;   (setq ac-delay 0.05)
+ ;;   (setq ac-auto-show-menu 0.05))
 
 
 ;; which key for displaying key combinations at the bottom
@@ -158,7 +166,7 @@
           (t . ivy--regex-plus)))                ;; and for evything else
   ;; Ivy-based interface to standard commands
   (global-set-key (kbd "C-s") 'swiper-isearch)
-  ;; (global-set-key (kbd "M-x") 'counsel-M-x)
+  (global-set-key (kbd "M-x") 'counsel-M-x)
   (global-set-key (kbd "C-x C-f") 'counsel-find-file)
   (global-set-key (kbd "M-y") 'counsel-yank-pop)
   (global-set-key (kbd "<f1> f") 'counsel-describe-function)
@@ -168,8 +176,8 @@
   (global-set-key (kbd "<f2> u") 'counsel-unicode-char)
   (global-set-key (kbd "<f2> j") 'counsel-set-variable)
   ;; (global-set-key (kbd "C-x b") 'counsel-ibuffer)
-  (global-set-key (kbd "C-x b") 'ivy-switch-buffer)
-  ;; (global-set-key (kbd "C-x b") 'counsel-switch-buffer)
+  ;;(global-set-key (kbd "C-x b") 'ivy-switch-buffer)
+  (global-set-key (kbd "C-x b") 'counsel-switch-buffer)
   (global-set-key (kbd "C-c v") 'ivy-push-view)
   (global-set-key (kbd "C-c V") 'ivy-pop-view)
   ;; Ivy-resume and other commands (ivy-resume resumes the last Ivy-based completion).
@@ -190,6 +198,27 @@
   (defalias #'describe-function #'helpful-callable)
   (defalias #'describe-variable #'helpful-variable)
   (defalias #'describe-symbol #'helpful-symbol))
+
+
+;; Everyone needs some magit
+(use-package magit)
+
+
+(use-package projectile
+  :diminish projectile-mode
+  :config (projectile-mode)
+  :custom ((projectile-completion-system 'ivy))
+  :bind-keymap
+  ("C-c p" . projectile-command-map)
+  :init
+  ;; NOTE: Set this to the folder where you keep your Git repos!
+  (when (file-directory-p "~/Repos/")
+    (setq projectile-project-search-path '("~/Repos/")))
+  (setq projectile-switch-project-action #'projectile-dired))
+
+(use-package counsel-projectile
+  :after projectile
+  :config (counsel-projectile-mode))
 
 
 ;; A somewhat nicer modeline
@@ -266,10 +295,9 @@
 
 (setq nano-font-size 11)
 ;; (load "nano")
-;; ==========
-
 
 ;; ==========
+
 ;; Stuff added by Custom
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
@@ -310,9 +338,11 @@
  '(ibuffer-filter-group-name-face 'modus-theme-mark-symbol)
  '(ibuffer-marked-face 'modus-theme-mark-sel)
  '(ibuffer-title-face 'modus-theme-pseudo-header)
+ '(mouse-wheel-progressive-speed nil)
  '(ns-right-alternate-modifier 'none)
+ '(org-agenda-files '("~/Dropbox/_org/journal.org"))
  '(package-selected-packages
-   '(all-the-icons markdown-mode which-key use-package undo-tree smex rainbow-delimiters org-bullets helpful counsel company auto-complete))
+   '(counsel-projectile projectile magit all-the-icons markdown-mode which-key use-package undo-tree smex rainbow-delimiters org-bullets helpful counsel company auto-complete))
  '(pdf-view-midnight-colors '("#282828" . "#f2e5bc"))
  '(tool-bar-mode nil)
  '(vc-annotate-background nil)
@@ -346,4 +376,4 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(default ((t (:family "Roboto Mono" :foundry "outline" :slant normal :weight normal :height 98 :width normal)))))
+ '(default ((t (:family "Roboto Mono" :foundry "outline" :slant normal :weight normal :height 120 :width normal)))))
