@@ -16,6 +16,7 @@
     dashboard
     helpful
     org
+    org-download
     projectile
     undo-tree
     smex
@@ -147,6 +148,9 @@
 
 (setq org-agenda-files (directory-files-recursively "~/Dropbox/_org/" "\\.org$"))
 
+;; Drag-and-drop to `dired`
+(add-hook 'dired-mode-hook 'org-download-enable)
+
 ;; Projectile
 ;; ==========
 (require 'projectile)
@@ -192,6 +196,7 @@
 
 ;; company
 ;; =======
+(setq company-dabbrev-downcase nil)
 (add-hook 'after-init-hook 'global-company-mode)
 
 
