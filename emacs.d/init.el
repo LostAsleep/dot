@@ -21,6 +21,7 @@
     smex
     which-key
     exec-path-from-shell  ;; set Emacs' `exec-path' and $PATH from the shell path
+    ace-jump-mode
     elpy
     company
     markdown-mode
@@ -164,6 +165,11 @@
 
 (setq dashboard-set-heading-icons t)
 (setq dashboard-set-file-icons t)
+
+
+;; ace-jump-mode
+;; =============
+(define-key global-map (kbd "C-c C-SPC" ) 'ace-jump-mode)
 
 
 ;; auto-complete
