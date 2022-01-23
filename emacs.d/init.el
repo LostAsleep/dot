@@ -39,6 +39,11 @@
            (require package))
       myPackages)
 
+;; Error retrieving packages on Emacs 27.2 on MacOS
+(when (and (equal emacs-version "27.2")
+           (eql system-type 'darwin))
+  (setq gnutls-algorithm-priority "NORMAL:-VERS-TLS1.3"))
+
 
 ;; Some general settings
 ;; =====================
