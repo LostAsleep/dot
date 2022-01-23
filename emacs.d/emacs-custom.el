@@ -6,9 +6,9 @@
  '(custom-enabled-themes '(dichromacy))
  '(ns-right-alternate-modifier 'none)
  '(org-agenda-files
-   '("~/Dropbox/_org/temp.org" "~/Dropbox/_org/radiology.org" "~/Dropbox/_org/personal.org" "~/Dropbox/_org/journal.org" "~/Dropbox/_org/cats.org"))
+   '("~/Dropbox/_org/Simon-Katzen/simon-katzen-pläne.org" "~/Dropbox/_org/cats.org" "~/Dropbox/_org/journal.org" "~/Dropbox/_org/personal.org" "~/Dropbox/_org/radiology.org" "~/Dropbox/_org/temp.org"))
  '(package-selected-packages
-   '(markdown-mode exec-path-from-shell elpy org which-key smex undo-tree projectile helpful)))
+   '(magit markdown-mode exec-path-from-shell elpy which-key smex undo-tree projectile helpful)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.

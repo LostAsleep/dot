@@ -24,6 +24,7 @@
     elpy
     company
     markdown-mode
+    magit
     ))
  
 ;; Scans myPackages - If a package is not already installed, install it
@@ -138,6 +139,7 @@
 ;; to enable resizing of image display
 (setq org-image-actual-width nil)
 
+(setq org-agenda-files (directory-files-recursively "~/Dropbox/_org/" "\\.org$"))
 
 ;; Projectile
 ;; ==========
@@ -166,14 +168,20 @@
 
 ;; auto-complete
 ;; =============
-(require 'auto-complete)
-(ac-config-default)
-(setq ac-candidate-limit 1000)
-(setq ac-ignore-case nil)
-(setq ac-delay 0.05)
-(setq ac-auto-show-menu 0.05)
-(with-eval-after-load 'auto-complete
-  (ac-flyspell-workaround))
+;; (require 'auto-complete)
+;; (setq-default ac-sources '(ac-source-abbrev ac-source-dictionary ac-source-words-in-same-mode-buffers))
+;; (setq ac-candidate-limit 1000)
+;; (setq ac-ignore-case nil)
+;; (setq ac-delay 0.05)
+;; (setq ac-auto-show-menu 0.05)
+;; (with-eval-after-load 'auto-complete
+;;   (ac-flyspell-workaround))
+;; (global-auto-complete-mode nil)
+
+
+;; company
+;; =======
+(add-hook 'after-init-hook 'global-company-mode)
 
 
 ;; Spell checking
