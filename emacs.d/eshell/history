@@ -1,0 +1,128 @@
+rm README.html 
+tldr pandoc
+pandoc README.org -s -o README.html
+open README.html 
+..
+isosec 
+mkdir 20220124162948 && cd 20220124162948
+touch README.org
+touch Standard-CSS-code-from-pandoc-standalone-html.txt
+ls
+ls
+ll
+ls
+..
+cd 20220124160807
+ls
+ls
+ls
+..
+ls
+python3 create_index.py 
+cd
+cd Repos/github.com/LostAsleep/
+ls
+git clone git@github.com:LostAsleep/lp3th.git
+ls
+cd lp3th/
+ls
+touch ex1.py
+pip list
+pip install readline
+cd
+la
+ll
+cat ~/.inputrc
+cd Repos/github.com/LostAsleep/lp3th/
+ls
+c
+ls
+c
+ll
+touch ex2.py
+touch ex3.py
+touch ex4.py
+touch ex5.py
+touch ex6.py
+ls
+cd zet
+cd 
+cd Repos/github.com/LostAsleep/zet/
+ls
+isosec
+mkdir 20220126214839
+cd 20220126214839
+touch learn-stuff-the-hard-way.txt
+touch README.org
+..
+ls
+..
+cd lp3th/
+ls
+python3 ex13.py first 2nd 3rd
+python3 ex13.py first 2nd 3rd
+c
+ls
+ll
+ls
+python3 ex14.py Philip
+ls
+python3 ex14.py Philip
+python4 ex15.py ex15_sample.txt 
+python3 ex15.py ex15_sample.txt 
+ls
+python3 ex16.py test.txt
+python3 ex16.py test.txt
+ls
+cat test.txt 
+echo "This is a test file." > test.txt 
+cat test.txt 
+python3 ex17.py test.txt new_file.txt
+cat new_file.txt 
+echo "Bla Blubb" > test.txt 
+cat test.txt 
+python3 ex17.py test.txt new_file.txt 
+cat new_file.txt 
+python3 ex18.py 
+python3 ex19.py 
+python3 ex19.py 
+python3 ex20.py test.txt 
+python3 ex20.py test.txt 
+pydoc file
+c
+pydoc file.seek
+python3 ex20.py test.txt 
+python3 ex20.py test.txt 
+black ex20.py 
+ls
+python3 ex20.py 
+ll
+python3 ex21.py 
+ls
+mv README.md README.org
+pandoc README.org -s -o README.md
+open README.md 
+pandoc README.org -s -o README.md
+open README.md 
+c
+ls
+c
+wget https://learnpythonthehardway.org/python3/languages.txt
+ls
+python3 ex23.py utf-8 strict
+black ex23.py 
+python3 -m venv venv
+echo "venv/" > .gitignore
+source venv/bin/activate
+ls
+cd venv/
+ls
+cd bin/
+ls
+ll
+...
+..
+..
+source venv/bin/activate
+bash source venv/bin/activate
+which bash

@@ -139,6 +139,11 @@
 ;; Time stamp after finished todo.
 (setq org-log-done t)
 
+;; A clearer look
+(setq org-hide-leading-stars t)
+(add-hook 'org-mode-hook 'org-indent-mode)
+(setq org-hide-emphasis-markers t)
+
 ;; Use relative path for files in the current directory and sub- directories of it.
 ;; For other files, use an absolute path.
 (setq org-link-file-path-type 'adaptive)
@@ -148,8 +153,20 @@
 
 (setq org-agenda-files (directory-files-recursively "~/Dropbox/_org/" "\\.org$"))
 
+
+;; dired
+;; =====
 ;; Drag-and-drop to `dired`
 (add-hook 'dired-mode-hook 'org-download-enable)
+
+;; By default, Image-Dired does not respect the Exif
+;; orientation field when displaying thumbnails or images.
+(with-eval-after-load 'image-dired
+  (add-to-list 'image-dired-cmd-create-thumbnail-options "-auto-orient")
+  (add-to-list 'image-dired-cmd-create-temp-image-options "-auto-orient")
+  (add-to-list 'image-dired-cmd-create-standard-thumbnail-options
+               "-auto-orient"))
+
 
 ;; Projectile
 ;; ==========
@@ -183,15 +200,15 @@
 
 ;; auto-complete
 ;; =============
-;; (require 'auto-complete)
-;; (setq-default ac-sources '(ac-source-abbrev ac-source-dictionary ac-source-words-in-same-mode-buffers))
-;; (setq ac-candidate-limit 1000)
-;; (setq ac-ignore-case nil)
-;; (setq ac-delay 0.05)
-;; (setq ac-auto-show-menu 0.05)
-;; (with-eval-after-load 'auto-complete
-;;   (ac-flyspell-workaround))
-;; (global-auto-complete-mode nil)
+(require 'auto-complete)
+(ac-config-default)
+(global-auto-complete-mode nil)
+(setq ac-candidate-limit 1000)
+(setq ac-ignore-case nil)
+(setq ac-delay 0.01)
+(setq ac-auto-show-menu 0.01)
+(with-eval-after-load 'auto-complete
+  (ac-flyspell-workaround))
 
 
 ;; company
@@ -223,9 +240,15 @@
 ;; ==================
 (setq python-shell-interpreter "python3")
 
+;; Disable python native completion error
+(setq python-shell-completion-native-enable nil)
+
 ;;Enable elpy
 (elpy-enable)
-(setq elpy-rpc-backend "jedi")
+(setq elpy-rpc-python-command "python3")
+;; (setq elpy-rpc-backend "jedi")
+;; (setq elpy-rpc-virtualenv-path 'current)
+;; (setq elpy-project-root nil)
 
 ;; Enable Flycheck
 (when (require 'flycheck nil t)
@@ -242,6 +265,13 @@
   (dashboard-mode)
   (dashboard-insert-startupify-lists)
   (dashboard-refresh-buffer))
+
+(defun phi/insert-image-drawer ()
+  "Insert an image drawer with width specifications at point."
+  (interactive)
+  (insert ":IMAGE:\n#+ATTR_HTML: :width 500\n#+ATTR_ORG: :width 500\n\n:END:\n")
+  (previous-line)
+  (previous-line))
 
 
 ;; CUSTOM FILE
