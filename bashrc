@@ -120,7 +120,11 @@ cyan='\[\033[0;36m\]';
 white='\[\033[0;37m\]';
 reset='\[\033[0m\]';
 
-export PS1="${white}[${yellow}\u${white}@${cyan}\h${white}:${magenta}\W${white}\$(git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/(\1)/')]\\$ \[$(tput sgr0)\]"
+# old short prompt
+# export PS1="${white}[${yellow}\u${white}@${cyan}\h${white}:${magenta}\W${white}\$(git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/(\1)/')]\\$ \[$(tput sgr0)\]"
+
+# new longer prompt
+export PS1="${white}╔ ${yellow}\u${white}@${blue}\h${white}:${magenta}[\w${white}\$(git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/(\1)/')${magenta}]\n${white}╚ ${blue}\\$ \[$(tput sgr0)\]${reset}"
 
 
 # ----------------- dircolors ------------------------------------------
