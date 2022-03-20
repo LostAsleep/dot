@@ -39,6 +39,11 @@ set noerrorbells
 " Being able to copy to system clipboard (had problems before)
 set mouse=v
 
+" This will enable the popup menu for usage of spell check
+set mousemodel=popup
+
+set guifont=Roboto\ Mono\ 11
+
 " ----------------------------------------------------------------------
 
 set softtabstop=2
