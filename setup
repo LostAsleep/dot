@@ -18,7 +18,7 @@ ls -lh "$HOME/.tmux.conf"
 
 
 # Install some packages
-sudo apt-get update && sudo apt-get install aptitude && sudo aptitude safe-upgrade && sudo apt-get install xclip tmux vim-gtk3 lynx w3m okular make build-essential curl shellcheck tldr git synaptic rar unrar unace p7zip-full p7zip-rar aria2 vlc mpv ffmpeg neofetch emacs-gtk python3-pip thunar tumbler tumbler-plugins-extra ffmpegthumbnailer texlive-latex-base texlive-fonts-recommended texlive-lang-german texlive-lang-english pandoc gwenview thunderbird thunderbird-locale-en thunderbird-locale-de firefox firefox-locale-en firefox-locale-de tree
+sudo apt-get update && sudo apt-get install aptitude && sudo aptitude safe-upgrade && sudo apt-get install xclip tmux vim-gtk3 lynx w3m okular make build-essential curl shellcheck tldr git synaptic rar unrar unace p7zip-full p7zip-rar aria2 vlc mpv ffmpeg neofetch emacs-gtk python3-pip thunar tumbler tumbler-plugins-extra ffmpegthumbnailer texlive-latex-base texlive-fonts-recommended texlive-lang-german texlive-lang-english pandoc gwenview thunderbird thunderbird-locale-en thunderbird-locale-de firefox firefox-locale-en firefox-locale-de tree hunspell hunspell-de-de-frami hunspell-en-gb hunspell-en-us hunspell-en-med
 
 
 # Downlad dictionaries for vim spell check
