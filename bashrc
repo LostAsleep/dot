@@ -198,10 +198,10 @@ pathprepend() { # Puts the given path at the top of PATH
 pathprepend \
   "$HOME/.local/bin" \
   "/usr/local/bin" \
-  "$HOME/Repos/github.com/LostAsleep/dot/scripts"
+  "$HOME/Repos/github.com/LostAsleep/dot/scripts" \
+  "$HOME/.config/lynx"
 
 pathappend \
-  "$HOME/.config/lynx" \
   "$HOME/Repos/github.com/LostAsleep/dot/lynx" \
   "/usr/local/go/bin" \
   "$HOME/.local/share/go/bin"
