@@ -93,9 +93,6 @@ set ttyfast
 " allow sensing the filetype
 filetype plugin on
 
-" set the background to dark
-set bg=dark
-
 " prevent the cursor from moving off screen
 set scrolloff=2
 
@@ -181,6 +178,62 @@ set undodir=$HOME/.vimtmp//,. " for undo files
 set undofile " enable undo files
 set backup " enable backup (and swap)
 
+
+" ----------------- Colors ---------------------------------------------
+" set the background to dark
+set bg=dark
+
+" base default color changes (gruvbox dark friendly)
+hi StatusLine ctermfg=black ctermbg=NONE
+hi StatusLineNC ctermfg=black ctermbg=NONE
+hi Normal ctermbg=NONE
+hi Special ctermfg=cyan
+hi LineNr ctermfg=black ctermbg=NONE
+hi SpecialKey ctermfg=black ctermbg=NONE
+hi ModeMsg ctermfg=black cterm=NONE ctermbg=NONE
+hi MoreMsg ctermfg=black ctermbg=NONE
+hi NonText ctermfg=black ctermbg=NONE
+hi vimGlobal ctermfg=black ctermbg=NONE
+hi ErrorMsg ctermbg=234 ctermfg=darkred cterm=NONE
+hi Error ctermbg=234 ctermfg=darkred cterm=NONE
+hi SpellBad ctermbg=234 ctermfg=darkred cterm=NONE
+hi SpellRare ctermbg=234 ctermfg=darkred cterm=NONE
+hi Search ctermbg=236 ctermfg=darkred
+hi vimTodo ctermbg=236 ctermfg=darkred
+hi Todo ctermbg=236 ctermfg=darkred
+hi IncSearch ctermbg=236 cterm=NONE ctermfg=darkred
+hi MatchParen ctermbg=236 ctermfg=darkred
+
+" color overrides
+au FileType * hi StatusLine ctermfg=black ctermbg=NONE
+au FileType * hi StatusLineNC ctermfg=black ctermbg=NONE
+au FileType * hi Normal ctermbg=NONE
+au FileType * hi Special ctermfg=cyan
+au FileType * hi LineNr ctermfg=black ctermbg=NONE
+au FileType * hi SpecialKey ctermfg=black ctermbg=NONE
+au FileType * hi ModeMsg ctermfg=black cterm=NONE ctermbg=NONE
+au FileType * hi MoreMsg ctermfg=black ctermbg=NONE
+au FileType * hi NonText ctermfg=black ctermbg=NONE
+au FileType * hi vimGlobal ctermfg=black ctermbg=NONE
+au FileType * hi goComment ctermfg=black ctermbg=NONE
+au FileType * hi ErrorMsg ctermbg=234 ctermfg=darkred cterm=NONE
+au FileType * hi Error ctermbg=234 ctermfg=darkred cterm=NONE
+au FileType * hi SpellBad ctermbg=234 ctermfg=darkred cterm=NONE
+au FileType * hi SpellRare ctermbg=234 ctermfg=darkred cterm=NONE
+au FileType * hi Search ctermbg=236 ctermfg=darkred
+au FileType * hi vimTodo ctermbg=236 ctermfg=darkred
+au FileType * hi Todo ctermbg=236 ctermfg=darkred
+au FileType * hi IncSearch ctermbg=236 cterm=NONE ctermfg=darkred
+au FileType * hi MatchParen ctermbg=236 ctermfg=darkred
+au FileType markdown,pandoc hi Title ctermfg=yellow ctermbg=NONE
+au FileType markdown,pandoc hi Operator ctermfg=yellow ctermbg=NONE
+au FileType yaml hi yamlBlockMappingKey ctermfg=NONE
+au FileType bash set sw=2
+au FileType c set sw=8
+
+set cinoptions+=:0
+
+
 " ----------------- Plugins --------------------------------------------
 
 " Install vim-plug if not already installed. According to rwxrob plug
@@ -205,7 +258,7 @@ if filereadable(expand("~/.vim/autoload/plug.vim"))
   Plug 'sheerun/vim-polyglot'
 
   Plug 'davidhalter/jedi-vim' " the jedi completion engine for Python
-  Plug 'lifepillar/vim-mucomplete' " Minimalist autocomplete popup
+"  Plug 'lifepillar/vim-mucomplete' " Minimalist autocomplete popup
   Plug 'morhetz/gruvbox'
   Plug 'fatih/vim-go', { 'do': ':GoInstallBinaries' }
   call plug#end()
@@ -264,12 +317,12 @@ syntax on
 "let g:jedi#rename_command = "<leader>r"
 
 " Settings for the mucomplete plugin
-set completeopt+=menuone
-set completeopt+=noinsert
-set shortmess+=c  " Shut off completion messages
-set belloff+=ctrlg " If Vim beebs during completion
-let g:mucomplete#enable_auto_at_startup = 1  "autostart
-let g:mucomplete#completion_delay = 1
+" set completeopt+=menuone
+" set completeopt+=noinsert
+" set shortmess+=c  " Shut off completion messages
+" set belloff+=ctrlg " If Vim beebs during completion
+" let g:mucomplete#enable_auto_at_startup = 1  "autostart
+" let g:mucomplete#completion_delay = 1
 
 " ----------------------------------------------------------------------
 
