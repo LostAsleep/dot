@@ -1,6 +1,6 @@
 #!/bin/sh
-# Symlink the config files to home
 
+# Symlink the config files to home
 ln -sf "$PWD/bashrc" "$HOME/.bashrc"
 ls -lh "$HOME/.bashrc"
 
@@ -16,18 +16,16 @@ ls -lh "$HOME/.vimrc"
 ln -sf "$PWD/tmux.conf" "$HOME/.tmux.conf"
 ls -lh "$HOME/.tmux.conf"
 
-
-# Install some packages
-sudo apt-get update && sudo apt-get install aptitude && sudo aptitude safe-upgrade && sudo apt-get install xclip tmux vim-gtk3 lynx w3m okular make build-essential curl shellcheck tldr git synaptic rar unrar unace p7zip-full p7zip-rar aria2 vlc mpv ffmpeg neofetch emacs-gtk python3-pip thunar tumbler tumbler-plugins-extra ffmpegthumbnailer texlive-latex-base texlive-fonts-recommended texlive-lang-german texlive-lang-english pandoc gwenview thunderbird thunderbird-locale-en thunderbird-locale-de firefox firefox-locale-en firefox-locale-de tree hunspell hunspell-de-de-frami hunspell-en-gb hunspell-en-us hunspell-en-med
-
-
 # Downlad dictionaries for vim spell check
 wget -P ~/.vim/spell/ http://ftp.vim.org/vim/runtime/spell/de.utf-8.spl
 wget -P ~/.vim/spell/ http://ftp.vim.org/vim/runtime/spell/de.utf-8.sug
-
 
 # Install the Plug plugin manager for vim
 curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
     https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 
+# Install some packages
+sudo apt-get -y update && sudo apt-get -y upgrade
+
+sudo apt-get -y install xclip tmux vim-gtk3 lynx w3m okular make build-essential curl shellcheck tldr git synaptic rar unrar unace p7zip-full p7zip-rar aria2 vlc mpv ffmpeg neofetch emacs-gtk python3-pip thunar tumbler tumbler-plugins-extra ffmpegthumbnailer texlive-latex-base texlive-fonts-recommended texlive-lang-german texlive-lang-english pandoc gwenview tree hunspell hunspell-de-de-frami hunspell-en-gb hunspell-en-us hunspell-en-med
 
