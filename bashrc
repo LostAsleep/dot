@@ -26,6 +26,7 @@ export GOBIN="$HOME/.local/share/go/bin"
 # annoying. This is the standard way to overcome that:
 export GOPRIVATE="/github.com/$GITUSER/*"
 export GOPROXY="direct"
+export GO111MODULE=on # prevent: cannot use path@version syntax in GOPATH mode
 
 # ----------------- macbook settings -----------------------------------
 
@@ -249,22 +250,15 @@ alias ...='cd ../..'
 alias ....='cd ../../..'
 alias .....='cd ../../../..'
 
-# Laziness
-alias chmox='chmod +x'
+# Misc
+alias chmox='chmod u+x'
+alias ip='ip -c'
 
 # Python
 alias pip='python3 -m pip'
 
 # emacsclient
 alias ec='emacsclient --create-frame --alternate-editor=""'
-
-# for Fedora
-# alias vi='vim'
-# alias vim='vimx'
-
-# Typora (Markdown editor) flatpak
-# flatpak install flathub io.typora.Typora
-# alias typora='flatpak run io.typora.Typora'
 
 # ----------------- programmable completion features ? -----------------
 

@@ -42,6 +42,8 @@ set mouse=v
 " This will enable the popup menu for usage of spell check
 set mousemodel=popup
 
+let mapleader = "-"
+
 " ----------------------------------------------------------------------
 
 set softtabstop=2
@@ -204,7 +206,7 @@ hi Todo ctermbg=236 ctermfg=darkred
 hi IncSearch ctermbg=236 cterm=NONE ctermfg=darkred
 hi MatchParen ctermbg=236 ctermfg=darkred
 
-" color overrides
+" " color overrides
 " au FileType * hi StatusLine ctermfg=black ctermbg=NONE
 " au FileType * hi StatusLineNC ctermfg=black ctermbg=NONE
 " au FileType * hi Normal ctermbg=NONE
@@ -216,22 +218,22 @@ hi MatchParen ctermbg=236 ctermfg=darkred
 " au FileType * hi NonText ctermfg=black ctermbg=NONE
 " au FileType * hi vimGlobal ctermfg=black ctermbg=NONE
 " au FileType * hi goComment ctermfg=black ctermbg=NONE
-au FileType * hi ErrorMsg ctermbg=234 ctermfg=darkred cterm=NONE
-au FileType * hi Error ctermbg=234 ctermfg=darkred cterm=NONE
-au FileType * hi SpellBad ctermbg=234 ctermfg=darkred cterm=NONE
-au FileType * hi SpellRare ctermbg=234 ctermfg=darkred cterm=NONE
-au FileType * hi Search ctermbg=236 ctermfg=darkred
-au FileType * hi vimTodo ctermbg=236 ctermfg=darkred
-au FileType * hi Todo ctermbg=236 ctermfg=darkred
-au FileType * hi IncSearch ctermbg=236 cterm=NONE ctermfg=darkred
-au FileType * hi MatchParen ctermbg=236 ctermfg=darkred
-au FileType markdown,pandoc hi Title ctermfg=yellow ctermbg=NONE
-au FileType markdown,pandoc hi Operator ctermfg=yellow ctermbg=NONE
-au FileType yaml hi yamlBlockMappingKey ctermfg=NONE
-au FileType bash set sw=2
-au FileType c set sw=8
-
-set cinoptions+=:0
+" au FileType * hi ErrorMsg ctermbg=234 ctermfg=darkred cterm=NONE
+" au FileType * hi Error ctermbg=234 ctermfg=darkred cterm=NONE
+" au FileType * hi SpellBad ctermbg=234 ctermfg=darkred cterm=NONE
+" au FileType * hi SpellRare ctermbg=234 ctermfg=darkred cterm=NONE
+" au FileType * hi Search ctermbg=236 ctermfg=darkred
+" au FileType * hi vimTodo ctermbg=236 ctermfg=darkred
+" au FileType * hi Todo ctermbg=236 ctermfg=darkred
+" au FileType * hi IncSearch ctermbg=236 cterm=NONE ctermfg=darkred
+" au FileType * hi MatchParen ctermbg=236 ctermfg=darkred
+" au FileType markdown,pandoc hi Title ctermfg=yellow ctermbg=NONE
+" au FileType markdown,pandoc hi Operator ctermfg=yellow ctermbg=NONE
+" au FileType yaml hi yamlBlockMappingKey ctermfg=NONE
+" au FileType bash set sw=2
+" au FileType c set sw=8
+" 
+" set cinoptions+=:0
 
 
 " ----------------- Plugins --------------------------------------------
@@ -263,6 +265,7 @@ if filereadable(expand("~/.vim/autoload/plug.vim"))
   Plug 'fatih/vim-go', { 'do': ':GoInstallBinaries' }
   call plug#end()
 
+
   " golang
   let g:go_fmt_fail_silently = 0
   let g:go_fmt_command = 'goimports'
@@ -286,6 +289,10 @@ if filereadable(expand("~/.vim/autoload/plug.vim"))
   "let g:go_metalinter_autosave=1
   set updatetime=100
   "let g:go_gopls_analyses = { 'composites' : v:false }
+  "---for the go language server
+  let g:go_def_mode='gopls'
+  let g:go_info_mode='gopls'
+  "---
   au FileType go nmap <leader>t :GoTest!<CR>
   au FileType go nmap <leader>v :GoVet!<CR>
   au FileType go nmap <leader>b :GoBuild!<CR>
@@ -296,7 +303,7 @@ else
   autocmd vimleavepre *.go !gofmt -w % " backup if fatih fails
 endif
 
-" colorscheme gruvbox8 " set the colorscheme (now installed)
+" Set a colorscheme
 colorscheme gruvbox
 
 " enable omni-completion, needs filetype plugin on
