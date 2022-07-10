@@ -26,9 +26,6 @@ curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
 
 # Install some packages
 sudo apt-get -y update && sudo apt-get -y upgrade
-sudo apt-get -y remove vim-tiny
-sudo apt-get -y install xclip tmux vim-gtk3 lynx w3m make build-essential curl shellcheck git synaptic aria2 neofetch p7zip-full unrar-free unace tree python3 python3-pip
-sudo apt-get -y install vlc mpv ffmpeg ffmpegthumbnailer gwenview
-sudo apt-get -y install pandoc texlive-latex-base texlive-fonts-recommended texlive-lang-german texlive-lang-english
-sudo apt-get -y install hunspell hunspell-de-de-frami hunspell-de-med hunspell-en-gb hunspell-en-us hunspell-en-med
-sudo apt-get -y install tldr && tldr --update
+
+sudo apt-get -y install xclip tmux vim-gtk3 lynx w3m okular make build-essential curl shellcheck tldr git synaptic rar unrar unace p7zip-full p7zip-rar aria2 vlc mpv ffmpeg neofetch emacs-gtk python3-pip thunar tumbler tumbler-plugins-extra ffmpegthumbnailer texlive-latex-base texlive-fonts-recommended texlive-lang-german texlive-lang-english pandoc gwenview tree hunspell hunspell-de-de-frami hunspell-en-gb hunspell-en-us hunspell-en-med
+
