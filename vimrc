@@ -183,7 +183,8 @@ set backup " enable backup (and swap)
 
 " ----------------- Colors ---------------------------------------------
 " set the background to dark
-set bg=dark
+set bg=light
+" set bg=dark
 
 " base default color changes (gruvbox dark friendly)
 hi StatusLine ctermfg=black ctermbg=NONE
@@ -304,7 +305,8 @@ else
 endif
 
 " Set a colorscheme
-colorscheme gruvbox
+colorscheme default
+" colorscheme gruvbox
 
 " enable omni-completion, needs filetype plugin on
 set omnifunc=syntaxcomplete#Complete
