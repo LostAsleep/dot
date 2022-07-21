@@ -28,13 +28,13 @@
     markdown-mode
     magit
     ))
- 
+
 ;; Scans myPackages - If a package is not already installed, install it
 (mapc #'(lambda (package)
           (unless (package-installed-p package)
             (package-install package)))
       myPackages)
- 
+
 ;; Requre all packages
 (mapc #'(lambda (package)
            (require package))

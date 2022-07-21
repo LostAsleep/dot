@@ -1,1 +1,0 @@
-("~/Repos/github.com/LostAsleep/lp3th/" "~/.emacs.d/" "~/Repos/github.com/LostAsleep/zet/" "~/Repos/github.com/LostAsleep/dot/" "~/Dropbox/_org/" "~/Repos/github.com/LostAsleep/PythonTraining/")
