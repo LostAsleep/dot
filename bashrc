@@ -78,20 +78,34 @@ __ps1() {
   local green="\[\033[38;5;2m\]"
   local blue="\[\033[38;5;12m\]"
   local red="\[\033[38;5;1m\]"
-
   local bold="$(tput bold)"
   local reset="\[\033[0m\]"
 
-  local branch="$(git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/(\1)/')"
 
-  PS1="${reset}${bold}"
-  PS1+="${green}\u@\h:";  # username@host:
-  PS1+="${blue}\w";       # working directory
-  PS1+="${red}$branch";
-  PS1+="${reset}\$ ";  # '$' (and reset color)
+  local venv=""
+  if [[ -n "$VIRTUAL_ENV" ]]; then
+    venv="(${VIRTUAL_ENV##*/}) "
+  fi
+
+
+  local git_branch="$(git branch 2> /dev/null)"  # Redirect errors to bit bucket
+  git_branch="(${git_branch:2:${#git_branch}})"  # Remove leading "* " if any, add parentheses
+
+  if [[ "${git_branch}" == "()" ]]; then  # If only empty parentheses change to empty string
+    git_branch=""
+  fi
+
+
+  PS1="${reset}${bold}\n";      # Empty line above prompt
+  PS1+="${venv}";               # if Python3 venv, get basepath of venv dir
+  PS1+="${green}\u@\h:";        # username@host:
+  PS1+="${blue}\w";             # working directory
+  PS1+="${red}${git_branch}";   # git branch (if any)
+  PS1+="${reset}\$ ";           # '$' (and reset color)
 }
 
 PROMPT_COMMAND="__ps1"
+
 
 # ----------------- dircolors ------------------------------------------
 
