@@ -78,9 +78,10 @@ __ps1() {
   local green="\[\033[38;5;2m\]"
   local blue="\[\033[38;5;12m\]"
   local red="\[\033[38;5;1m\]"
-  local bold="$(tput bold)"
   local reset="\[\033[0m\]"
 
+  local bold
+  bold="$(tput bold)"
 
   local venv=""
   if [[ -n "$VIRTUAL_ENV" ]]; then
@@ -88,7 +89,8 @@ __ps1() {
   fi
 
 
-  local git_branch="$(git branch 2> /dev/null)"  # Redirect errors to bit bucket
+  local git_branch
+  git_branch="$(git branch 2> /dev/null)"  # Redirect errors to bit bucket
   git_branch="(${git_branch:2:${#git_branch}})"  # Remove leading "* " if any, add parentheses
 
   if [[ "${git_branch}" == "()" ]]; then  # If only empty parentheses change to empty string
