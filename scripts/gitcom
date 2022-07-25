@@ -1,0 +1,5 @@
+#!/bin/sh
+
+# Stage all changes and then start commiting.
+
+git add . && git commit
