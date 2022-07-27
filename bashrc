@@ -98,7 +98,7 @@ __ps1() {
   fi
 
 
-  PS1="${reset}${bold}\n";      # Empty line above prompt
+  PS1="${reset}\n";      # Empty line above prompt
   PS1+="${venv}";               # if Python3 venv, get basepath of venv dir
   PS1+="${green}\u@\h:";        # username@host:
   PS1+="${blue}\w";             # working directory
