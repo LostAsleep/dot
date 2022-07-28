@@ -1,13 +1,43 @@
-#!/bin/bash
+#!/bin/python3
 
-subtocurr() {
-  # Move the contents of the first level of subfolders
-  # into the current directory. Dotfiles will NOT be copied.
-  for d in *; do
-    if [[ -d "$d" ]]; then
-      mv -i "$d"/* .
-    fi
-  done
-}
 
-subtocurr
+import os
+
+
+def subtocurr(start_Dir):
+    """Gets all subdirectories and contents of the given directory,
+    and the moves all found files to the starting directory. While
+    copying all spaces in filenames will be replaced by dashes and
+    the former folders will be part of the new filename.
+
+    This is expected to be run on a Linux system since '/' is hard
+    coded as the directory maker for now."""
+
+    content_Generator = os.walk(start_Dir)
+    content_List = list(content_Generator)
+
+    for i in range(1, len(content_List)):  # First entry is start directory
+        current_Dir_Name = content_List[i][0]
+        sub_Dirs = content_List[i][1]
+        files = content_List[i][2]
+
+        path_Without_Dot = current_Dir_Name[2:]
+        new_First_Filename_Part = "-".join(path_Without_Dot.split("/"))
+
+        for file in files:
+            old_Complete_File_Path = f"{current_Dir_Name}/{file}"
+            filename_To_Dash = "-".join(file.split())
+            new_Filename = f"{new_First_Filename_Part}-{filename_To_Dash}"
+            new_File_Path = f"./{new_Filename}"
+
+            print(f"Old path: {old_Complete_File_Path}")
+            print(f"New path: {new_File_Path}")
+            print("Starting to move file...")
+
+            os.rename(old_Complete_File_Path, new_File_Path)
+            print("Done.\n")
+        print("\n")
+
+
+if __name__ == "__main__":
+    subtocurr(".")
