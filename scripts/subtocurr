@@ -1,0 +1,13 @@
+#!/bin/bash
+
+subtocurr() {
+  # Move the contents of the first level of subfolders
+  # into the current directory. Dotfiles will NOT be copied.
+  for d in *; do
+    if [[ -d "$d" ]]; then
+      mv -i "$d"/* .
+    fi
+  done
+}
+
+subtocurr
