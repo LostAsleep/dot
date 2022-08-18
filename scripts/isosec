@@ -1,5 +1,12 @@
 #!/bin/sh
 
+set -e  # Exit immediately if a command exits with a non-zero status.
+
 # Get the GMT (greenwich mean time) to the second
 
-exec date -u +%Y%m%d%H%M%S
+isosec() {
+  exec date -u +%Y%m%d%H%M%S
+}
+
+
+isosec

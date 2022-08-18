@@ -1,5 +1,11 @@
 #!/bin/sh
 
+set -e  # Exit immediately if a command exits with a non-zero status.
+
 # Stage all changes and then start commiting.
 
-git add . && git commit
+gitcom() {
+  git add . && git commit
+}
+
+gitcom

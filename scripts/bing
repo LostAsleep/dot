@@ -1,4 +1,7 @@
 #!/bin/sh
+
+set -e  # Exit immediately if a command exits with a non-zero status.
+
 url="https://www.bing.com/search?q=$*"
 exec lynx "${url}"
 # exec w3m "${url}"

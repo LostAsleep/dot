@@ -1,5 +1,7 @@
 #!/bin/sh
 
-# This searches recursively in the current folder 
+set -e  # Exit immediately if a command exits with a non-zero status.
+
+# This searches recursively in the current folder
 # for the search term in all .md files
 grep -RIiHn --color=auto --include=*.md "$*" .
