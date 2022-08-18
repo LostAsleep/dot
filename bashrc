@@ -12,6 +12,7 @@ export GITUSER="LostAsleep"
 export DOWNLOADS="$HOME/Downloads"
 export DOTFILES="$HOME/Repos/github.com/$GITUSER/dot"
 export SNIPPETS="$HOME/Repos/github.com/$GITUSER/dot/snippets"
+export ZETTEL="$HOME/Repos/github.com/$GITUSER/zet"
 export TERM=xterm-256color
 
 export EDITOR=vim

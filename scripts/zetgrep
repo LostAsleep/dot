@@ -2,6 +2,6 @@
 
 set -e  # Exit immediately if a command exits with a non-zero status.
 
-# This searches recursively in the current folder
+# This searches recursively in the zet folder
 # for the search term in all .md files
-grep -RIiHn --color=auto --include=*.md "$*" .
+grep -RIiHn --color=auto --include=*.md "$*" "$ZETTEL"
